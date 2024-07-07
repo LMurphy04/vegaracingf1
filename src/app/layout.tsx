@@ -1,10 +1,8 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import Navbar from "./title";
+import Navbar from "./header";
 import { MantineProvider } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
