@@ -21,7 +21,7 @@ export default function Gallery() {
         </Link>
         <div className="flex-1 sm:hidden">
           {/* to make button vertically center make this a flex and make button my-auto and ml-auto */}
-          <Menu classNames={{ item: "h-10" }}>
+          <Menu classNames={{ item: "p-0" }}>
             <Menu.Target>
               <div className="float-right my-auto border-2 border-black font-semibold bg-[#E6E6E6] px-3 py-1 hover:cursor-pointer hover:bg-vega-blue hover:text-white">
                 ≡
@@ -29,42 +29,74 @@ export default function Gallery() {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item>
-                <Link className="h-10" href={`/meet-the-team`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/`}
+                >
+                  Home
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/meet-the-team`}
+                >
                   Meet the Team
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/sustainability`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/sustainability`}
+                >
                   Sustainability
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/vega-inspire`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/vega-inspire`}
+                >
                   Vega Inspire
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/car-museum`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/car-museum`}
+                >
                   Car Museum
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/our-journey`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/our-journey`}
+                >
                   Our Journey
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/partners`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/partners`}
+                >
                   Partners
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/blog`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/blog`}
+                >
                   Blog
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link className="h-10" href={`/contact-us`}>
+                <Link
+                  className="justify-center text-center flex px-3 py-2"
+                  href={`/contact-us`}
+                >
                   Contact Us
                 </Link>
               </Menu.Item>
@@ -73,7 +105,7 @@ export default function Gallery() {
         </div>
       </div>
       <div className="hidden sm:flex mx-10 border-2 border-black font-semibold bg-[#E6E6E6]">
-        <Menu trigger="hover" classNames={{ item: "h-10" }}>
+        <Menu trigger="hover" classNames={{ item: "p-0" }}>
           <Menu.Target>
             <div className="flex-1 text-center content-center h-10 hover:cursor-pointer hover:bg-vega-blue hover:text-white">
               About Us
@@ -81,17 +113,26 @@ export default function Gallery() {
           </Menu.Target>
           <Menu.Dropdown>
             <Menu.Item>
-              <Link className="h-10" href={`/meet-the-team`}>
+              <Link
+                className="justify-center text-center flex px-3 py-2"
+                href={`/meet-the-team`}
+              >
                 Meet the Team
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link className="h-10" href={`/sustainability`}>
+              <Link
+                className="justify-center text-center flex px-3 py-2"
+                href={`/sustainability`}
+              >
                 Sustainability
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link className="h-10" href={`/vega-inspire`}>
+              <Link
+                className="justify-center text-center flex px-3 py-2"
+                href={`/vega-inspire`}
+              >
                 Vega Inspire
               </Link>
             </Menu.Item>

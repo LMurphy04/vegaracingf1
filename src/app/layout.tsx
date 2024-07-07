@@ -30,8 +30,8 @@ export default function RootLayout({
       <body className={`${inter.className} bg-[#F5F5F5] font-[figtree]`}>
         <MantineProvider>
           <Navbar />
+          <div className="mx-5 sm:mx-10 my-5">{children}</div>
         </MantineProvider>
-        <div className="mx-5 sm:mx-10 my-5">{children}</div>
       </body>
     </html>
   );
