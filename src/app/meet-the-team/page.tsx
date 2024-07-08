@@ -1,10 +1,9 @@
+import Title from "../title";
+
 export default function MeetTheTeam() {
   return (
     <>
-      <div className="flex my-5 text-xl italic">
-        <p>Meet the Team</p>
-        <span className="border-[1px] h-1/2 ml-3 my-auto grow border-black"></span>
-      </div>
+      <Title title={"Meet the Team"} />
       <div className="flex flex-wrap">
         <ImageCollection />
       </div>

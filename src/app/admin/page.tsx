@@ -1,119 +1,89 @@
 "use client";
-import { db } from "../firebase";
 import { useEffect, useState } from "react";
-import { addDoc, getDocs, collection, Timestamp } from "firebase/firestore";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import Title from "../title";
 
 export default function Home() {
-  const [body, setBody] = useState("");
-  const [heading, setHeading] = useState("");
-  const [blogPosts, setBlogPosts] = useState<any>([]);
-  const [update, setUpdate] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
   //READ
   useEffect(() => {
-    console.log("trying to access blog data");
-    async function fetchBlogPosts() {
-      console.log("1");
-      const querySnapshot = await getDocs(collection(db, "blog"));
-      console.log("2");
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      console.log("3");
-      data.sort((a, b) => b.date - a.date);
-      console.log(data);
-      setBlogPosts(data);
-    }
-    fetchBlogPosts();
-  }, [update]);
-
-  const BlogDisplay = function displayBlogs() {
-    try {
-      if (blogPosts.length == 0) {
-        return <p>No blogs found!</p>;
+    auth.onAuthStateChanged((user) => {
+      if (user != null) {
+        console.log(`Logged In`);
+        router.push("/admin/edit-blog");
       }
-      return blogPosts.map((post: any, index: number) => (
-        <div
-          key={index}
-          className="flex-1 flex-col border-2 border-black my-3 p-2"
-        >
-          <div className="underline font-semibold flex-1">{post.heading}</div>
-          <div className="flex-1">{post.body}</div>
-          <div className="font-thin flex-1 text-right">
-            {convertTimestampToString(post.date)}
-          </div>
-        </div>
-      ));
-    } catch (error) {
-      console.log("error displaying");
-      return <p>Error Loading Blogs!</p>;
-    }
-  };
+    });
+  }, []);
 
-  function convertTimestampToString(date: Timestamp) {
-    const dd = String(date.toDate().getDate()).padStart(2, "0");
-    const mm = String(date.toDate().getMonth() + 1).padStart(2, "0");
-    const yyyy = String(date.toDate().getFullYear()).padStart(2, "0");
-    return `${dd}/${mm}/${yyyy}`;
-  }
-
-  //WRITE
-  const addBlogData = async (heading: string, body: string) => {
-    try {
-      const docRef = await addDoc(collection(db, "blog"), {
-        heading: heading,
-        body: body,
-        date: new Date(),
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    console.log("help");
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential.user);
+        setEmail("");
+        setPassword("");
+        router.push("/admin/edit-blog");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(`${errorCode}: ${errorMessage}`);
       });
-      console.log("Document written with ID: ", docRef.id);
-      setUpdate(!update);
-      return true;
-    } catch (error) {
-      console.error("Error adding document ", error);
-      return false;
-    }
-  };
-
-  const handleSubmit = async (formdata: any) => {
-    formdata.preventDefault();
-    const added = await addBlogData(
-      heading == "" ? "Blog Post" : heading,
-      body == "" ? "..." : body
-    );
-    if (added) {
-      setBody("");
-      setHeading("");
-    }
   };
 
   return (
     <>
       <div>
-        <p>Admin</p>
-        <div className="flex flex-col">
-          <BlogDisplay />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="heading">Heading: </label>
-          <input
-            id="heading"
-            type="text"
-            value={heading}
-            onChange={(e) => {
-              setHeading(e.target.value);
-            }}
-          />
-          <label htmlFor="body">Body: </label>
-          <input
-            id="body"
-            type="text"
-            value={body}
-            onChange={(e) => {
-              setBody(e.target.value);
-            }}
-          />
-          <button>Submit</button>
+        <Title title={"Admin Login"} />
+        <form
+          className="border-2 border-black flex flex-col bg-vega-blue mx-auto w-80 px-3 py-10 gap-3"
+          onSubmit={handleLogin}
+        >
+          <div className="flex">
+            <label
+              className="font-semibold text-center mr-3 text-white"
+              htmlFor="email"
+            >
+              Email:{" "}
+            </label>
+            <input
+              className="border-2 border-black grow"
+              id="email"
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
+          <div className="flex">
+            <label
+              className="font-semibold text-center mr-3 text-white"
+              htmlFor="password"
+            >
+              Password:{" "}
+            </label>
+            <input
+              className="border-2 border-black grow"
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
+          <div className="flex justify-center">
+            <button className="text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:underline underline-offset-2">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
