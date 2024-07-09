@@ -1,16 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Title from "../title";
 
-export default function Home() {
+export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
-  //READ
+  // Check if user is already logged in
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user != null) {
@@ -20,72 +21,91 @@ export default function Home() {
     });
   }, []);
 
+  // Handles Login Attempts
   const handleLogin = (e: any) => {
     e.preventDefault();
-    console.log("help");
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user);
-        setEmail("");
-        setPassword("");
         router.push("/admin/edit-blog");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`${errorCode}: ${errorMessage}`);
+        setError(error.message);
       });
   };
 
   return (
     <>
-      <div>
-        <Title title={"Admin Login"} />
-        <form
-          className="border-2 border-black flex flex-col bg-vega-blue mx-auto w-80 px-3 py-10 gap-3"
-          onSubmit={handleLogin}
-        >
-          <div className="flex">
-            <label
-              className="font-semibold text-center mr-3 text-white"
-              htmlFor="email"
-            >
-              Email:{" "}
-            </label>
-            <input
-              className="border-2 border-black grow"
-              id="email"
-              type="text"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex">
-            <label
-              className="font-semibold text-center mr-3 text-white"
-              htmlFor="password"
-            >
-              Password:{" "}
-            </label>
-            <input
-              className="border-2 border-black grow"
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex justify-center">
-            <button className="text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:underline underline-offset-2">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+      <Title title={"Admin Login"} />
+      <ErrorBlock errorMessage={error} />
+      <LoginForm
+        email={email}
+        password={password}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+      />
     </>
+  );
+}
+
+function ErrorBlock({ errorMessage }: { errorMessage: string }) {
+  return (
+    <div
+      className={`text-white font-extrabold border-2 border-b-0 border-black flex flex-col bg-red-500 mx-auto w-80 px-3 py-5 ${
+        errorMessage === "" ? "hidden" : "block"
+      }`}
+    >
+      Invalid login. Try again.
+    </div>
+  );
+}
+
+function LoginForm({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  handleLogin,
+}: {
+  email: string;
+  setEmail: Function;
+  password: string;
+  setPassword: Function;
+  handleLogin: FormEventHandler;
+}) {
+  return (
+    <form
+      className="border-2 border-black flex flex-col bg-[#E6E6E6] mx-auto w-80 px-3 py-10 gap-3 shadow-md"
+      onSubmit={handleLogin}
+    >
+      <input
+        className="border-2 border-black grow rounded-md p-1"
+        id="email"
+        type="text"
+        value={email}
+        placeholder="Email Address"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <input
+        className="border-2 border-black grow rounded-md p-1"
+        id="password"
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+      <div className="flex justify-center">
+        <button className="px-3 py-1 border-2 border-black font-semibold bg-white hover:bg-vega-blue hover:text-white">
+          Log In
+        </button>
+      </div>
+    </form>
   );
 }

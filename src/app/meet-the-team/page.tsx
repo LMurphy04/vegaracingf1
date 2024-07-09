@@ -19,7 +19,7 @@ function ImageCollection() {
 
 function MemberImage({ name }: { name: String }) {
   return (
-    <div className="basis-1/2 sm:flex-1 flex border-2 border-[#F5F5F5] h-[300px] bg-vega-pink sm:hover:flex-[2] transition-all">
+    <div className="basis-1/2 sm:flex-1 flex border-2 border-[#F5F5F5] h-[300px] bg-vega-pink sm:hover:flex-[2] sm:hover:border-b-vega-blue sm:hover:border-b-8 transition-all">
       <p className="text-white font-bold text-2xl mt-auto mb-3 ml-3">{name}</p>
     </div>
   );

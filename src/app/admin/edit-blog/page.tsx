@@ -1,6 +1,7 @@
 "use client";
 import { db, auth } from "../../firebase";
-import { useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
+import { Modal, Button } from "@mantine/core";
 import {
   addDoc,
   getDocs,
@@ -8,6 +9,7 @@ import {
   Timestamp,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import Title from "../../title";
@@ -19,22 +21,7 @@ export default function Home() {
   const [update, setUpdate] = useState(false);
   const router = useRouter();
 
-  const handleDelete = async (blogPost: any) => {
-    const docRef = doc(db, "blog", blogPost.id);
-    console.log(blogPost);
-    try {
-      console.log("a");
-      await deleteDoc(docRef);
-      console.log("b");
-      setUpdate(!update);
-      console.log("c");
-      console.log("Post has been deleted successfully");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  //READ
+  // Check if logged in, if not return to login page
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user == null) {
@@ -46,47 +33,56 @@ export default function Home() {
     });
   }, []);
 
+  // Access Blog Data
   useEffect(() => {
-    console.log("trying to access blog data");
     async function fetchBlogPosts() {
-      console.log("1");
       const querySnapshot = await getDocs(collection(db, "blog"));
-      console.log("2");
       const data = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      console.log("3");
       data.sort((a, b) => b.date - a.date);
-      console.log(data);
       setBlogPosts(data);
     }
     fetchBlogPosts();
   }, [update]);
 
-  const BlogDisplay = function displayBlogs() {
+  // Handle Editing
+  const handleEdit = async (blogPost: any, heading: string, body: string) => {
+    const docRef = doc(db, "blog", blogPost.id);
     try {
-      if (blogPosts.length == 0) {
-        return <p>No blogs found!</p>;
-      }
-      return blogPosts.map((post: any, index: number) => (
-        <BlogPost key={index} post={post} handleDelete={handleDelete} />
-      ));
+      await updateDoc(docRef, { heading: heading, body: body });
+      setUpdate(!update);
+      console.log("Post has been updated successfully");
     } catch (error) {
-      console.log("error displaying");
-      return <p>Error Loading Blogs!</p>;
+      console.log(error);
     }
   };
 
-  //WRITE
-  const addBlogData = async (heading: string, body: string) => {
+  // Handle Deletion
+  const handleDelete = async (blogPost: any) => {
+    const docRef = doc(db, "blog", blogPost.id);
+    try {
+      await deleteDoc(docRef);
+      setUpdate(!update);
+      console.log("Post has been deleted successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Handle Adding Blog Post
+  const addBlogData = async (formdata: any) => {
+    formdata.preventDefault();
     try {
       const docRef = await addDoc(collection(db, "blog"), {
-        heading: heading,
-        body: body,
+        heading: heading == "" ? "Blog Post" : heading,
+        body: body == "" ? "..." : body,
         date: new Date(),
       });
       console.log("Document written with ID: ", docRef.id);
+      setBody("");
+      setHeading("");
       setUpdate(!update);
       return true;
     } catch (error) {
@@ -95,59 +91,120 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = async (formdata: any) => {
-    formdata.preventDefault();
-    const added = await addBlogData(
-      heading == "" ? "Blog Post" : heading,
-      body == "" ? "..." : body
-    );
-    if (added) {
-      setBody("");
-      setHeading("");
+  // Create Blog Display
+  const BlogDisplay = function displayBlogs() {
+    try {
+      if (blogPosts.length == 0) {
+        return (
+          <div className="p-2 font-semibold italic flex-1 break-words">
+            No blog posts found!
+          </div>
+        );
+      }
+      return (
+        <div className="flex flex-col gap-3">
+          {blogPosts.map((post: any, index: number) => (
+            <BlogPost
+              key={index}
+              post={post}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          ))}
+        </div>
+      );
+    } catch (error) {
+      console.log("error displaying");
+      return (
+        <div className="font-semibold italic flex-1 break-words p-2">
+          Error loading blog posts!
+        </div>
+      );
     }
   };
 
   return (
     <>
-      <div>
-        <Title title={"Admin Blog View"} />
-        <div className="flex flex-col gap-3">
-          <BlogDisplay />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="heading">Heading: </label>
-          <input
-            id="heading"
-            type="text"
-            value={heading}
-            onChange={(e) => {
-              setHeading(e.target.value);
-            }}
-          />
-          <label htmlFor="body">Body: </label>
-          <input
-            id="body"
-            type="text"
-            value={body}
-            onChange={(e) => {
-              setBody(e.target.value);
-            }}
-          />
-          <button>Submit</button>
-        </form>
-      </div>
+      <Title title={"Admin Blog View"} />
+      <AddPost
+        heading={heading}
+        body={body}
+        setHeading={setHeading}
+        setBody={setBody}
+        addBlogData={addBlogData}
+      />
+      <Title title={"Blog Posts"} />
+      <BlogDisplay />
     </>
   );
 }
 
+// Add Post Interface
+function AddPost({
+  heading,
+  setHeading,
+  body,
+  setBody,
+  addBlogData,
+}: {
+  heading: string;
+  setHeading: Function;
+  body: string;
+  setBody: Function;
+  addBlogData: FormEventHandler;
+}) {
+  return (
+    <form
+      className="flex flex-col gap-3 my-3 p-2 border-2 border-black"
+      onSubmit={addBlogData}
+    >
+      <div className="font-semibold underline underline-offset-2">
+        Add a Blog Post
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="heading">Heading: </label>
+        <input
+          className="border-2 border-black grow rounded-md p-1"
+          id="heading"
+          type="text"
+          value={heading}
+          onChange={(e) => {
+            setHeading(e.target.value);
+          }}
+        />
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="body">Body:</label>
+        <textarea
+          className="border-2 border-black grow rounded-md p-1 whitespace-pre resize-none"
+          id="body"
+          value={body}
+          rows={5}
+          onChange={(e) => {
+            setBody(e.target.value);
+          }}
+        />
+      </div>
+      <button className="px-3 py-1 border-2 border-black font-semibold bg-white hover:bg-vega-blue hover:text-white">
+        Submit
+      </button>
+    </form>
+  );
+}
+
+// Blog Post Interface
 function BlogPost({
   post,
   handleDelete,
+  handleEdit,
 }: {
   post: any;
   handleDelete: Function;
+  handleEdit: Function;
 }) {
-  const [editing, setEditing] = useState(false);
+  const [opened, setOpened] = useState(false);
+  const [body, setBody] = useState(post.body);
+  const [heading, setHeading] = useState(post.heading);
 
   function convertTimestampToString(date: Timestamp) {
     const dd = String(date.toDate().getDate()).padStart(2, "0");
@@ -157,23 +214,79 @@ function BlogPost({
   }
 
   return (
-    <div className="flex-1 flex-col border-2 border-black p-2">
-      <div className="underline font-semibold flex-1">{post.heading}</div>
-      <div className="flex-1">{post.body}</div>
-      <div className="font-thin flex-1 text-right">
-        {convertTimestampToString(post.date)}
+    <>
+      <div className="flex-1 flex-col border-2 border-black p-2">
+        <div className="underline font-semibold flex-1 break-words">
+          {post.heading}
+        </div>
+        <div className="flex-1 break-words whitespace-pre text-wrap">
+          {post.body}
+        </div>
+        <div className="font-thin flex-1 text-right">
+          {convertTimestampToString(post.date)}
+        </div>
+        <div className="flex flex-row gap-2 border-t-2 pt-2 border-black">
+          <button
+            onClick={() => setOpened(true)}
+            className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => handleDelete(post)}
+            className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white"
+          >
+            Delete
+          </button>
+        </div>
       </div>
-      <div className="flex flex-row gap-2 border-t-2 pt-2 border-black">
-        <button className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white">
-          Edit
-        </button>
-        <button
-          onClick={() => handleDelete(post)}
-          className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white"
-        >
-          Delete
-        </button>
-      </div>
-    </div>
+      <Modal
+        opened={opened}
+        onClose={() => {
+          setOpened(false);
+          setBody(post.body);
+          setHeading(post.heading);
+        }}
+        title="Edit Post"
+        centered
+        classNames={{ title: "font-semibold underline underline-offset-2" }}
+      >
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col">
+            <label htmlFor="heading">Heading: </label>
+            <input
+              className="border-2 border-black grow rounded-md p-1"
+              id="heading"
+              type="text"
+              value={heading}
+              onChange={(e) => {
+                setHeading(e.target.value);
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="body">Body:</label>
+            <textarea
+              className="border-2 border-black grow rounded-md p-1 whitespace-pre resize-none text-wrap"
+              id="body"
+              value={body}
+              rows={5}
+              onChange={(e) => {
+                setBody(e.target.value);
+              }}
+            />
+          </div>
+          <button
+            onClick={() => {
+              setOpened(false);
+              handleEdit(post, heading, body);
+            }}
+            className="px-3 py-1 border-2 border-black font-semibold bg-white hover:bg-vega-blue hover:text-white"
+          >
+            Confirm
+          </button>
+        </div>
+      </Modal>
+    </>
   );
 }
