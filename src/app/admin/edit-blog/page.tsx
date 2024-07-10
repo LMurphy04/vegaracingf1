@@ -93,34 +93,25 @@ export default function Home() {
 
   // Create Blog Display
   const BlogDisplay = function displayBlogs() {
-    try {
-      if (blogPosts.length == 0) {
-        return (
-          <div className="p-2 font-semibold italic flex-1 break-words">
-            No blog posts found!
-          </div>
-        );
-      }
+    if (blogPosts.length == 0) {
       return (
-        <div className="flex flex-col gap-3">
-          {blogPosts.map((post: any, index: number) => (
-            <BlogPost
-              key={index}
-              post={post}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-            />
-          ))}
-        </div>
-      );
-    } catch (error) {
-      console.log("error displaying");
-      return (
-        <div className="font-semibold italic flex-1 break-words p-2">
-          Error loading blog posts!
+        <div className="p-2 font-semibold italic flex-1 break-words">
+          No blog posts found!
         </div>
       );
     }
+    return (
+      <div className="flex flex-col gap-3">
+        {blogPosts.map((post: any, index: number) => (
+          <BlogPost
+            key={index}
+            post={post}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
+        ))}
+      </div>
+    );
   };
 
   return (

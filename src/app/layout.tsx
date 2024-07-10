@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./header";
 import { MantineProvider } from "@mantine/core";
+import Footer from "./footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} bg-[#F5F5F5] font-[figtree]`}>
+      <body
+        className={`${inter.className} bg-[#F5F5F5] font-[figtree] min-h-screen flex flex-col`}
+      >
         <MantineProvider>
           <Navbar />
           <div className="mx-5 sm:mx-10 my-5">{children}</div>
+          <Footer />
         </MantineProvider>
       </body>
     </html>

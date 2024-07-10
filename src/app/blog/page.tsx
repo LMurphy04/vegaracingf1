@@ -5,7 +5,7 @@ import { collection, getDocs, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 export default function Home() {
-  const [blogPosts, setBlogPosts] = useState<any>([]);
+  const [blogPosts, setBlogPosts] = useState<any>(null);
 
   useEffect(() => {
     async function fetchBlogPosts() {
@@ -20,6 +20,29 @@ export default function Home() {
     fetchBlogPosts();
   }, []);
 
+  const BlogDisplay = () => {
+    if (blogPosts === null) {
+      return (
+        <div className="p-5 font-semibold italic flex flex-col text-center justify-center break-words">
+          Blog Posts Loading...
+        </div>
+      );
+    } else if (blogPosts.length == 0) {
+      return (
+        <div className="p-5 font-semibold italic flex justify-center break-words">
+          No Posts Found!
+        </div>
+      );
+    }
+    return (
+      <>
+        {blogPosts.map((post: any, index: number) => {
+          return <BlogPost key={index} post={post} />;
+        })}
+      </>
+    );
+  };
+
   return (
     <>
       <Title title={"Blog"} />
@@ -28,9 +51,7 @@ export default function Home() {
           Stay up to date with Vega Racing through our blog!
         </p>
       </div>
-      {blogPosts.map((post: any, index: number) => {
-        return <BlogPost key={index} post={post} />;
-      })}
+      <BlogDisplay />
     </>
   );
 }
