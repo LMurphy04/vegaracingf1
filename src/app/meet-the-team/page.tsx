@@ -37,12 +37,11 @@ export default function MeetTheTeam() {
         {membersInfo.map((member, index) => {
           return (
             <Tabs.Panel key={index} value={member.name}>
-              {member.name}
-              <br />
-              {member.role}
-              <br />
-              <br />
-              {member.bio}
+              <div className="pb-3 pr-3 border-b-[1px] border-black">
+                <p className="text-xl font-bold">{member.name}</p>
+                <p className="text-md font-light">{member.role}</p>
+              </div>
+              <p className="mt-3 whitespace-pre text-wrap">{member.bio}</p>
             </Tabs.Panel>
           );
         })}
@@ -56,6 +55,7 @@ function ImageCollection({ tab }: { tab: Function }) {
     <MemberImage
       key={index}
       name={memberInfo.name}
+      role={memberInfo.role}
       image={memberInfo.image}
       tab={tab}
     />
@@ -66,17 +66,19 @@ function MemberImage({
   name,
   image,
   tab,
+  role,
 }: {
   name: string;
   image: string;
   tab: Function;
+  role: string;
 }) {
   return (
     <div
       className={`${image} bg-center bg-no-repeat bg-cover basis-1/2 sm:flex-1 flex border-2 border-[#F5F5F5] h-[300px] sm:hover:flex-[2] sm:hover:border-b-vega-blue sm:hover:border-b-8 transition-all`}
       onMouseOver={() => tab(name)}
     >
-      <p className="text-white font-bold text-2xl mt-auto mb-3 ml-3">{name}</p>
+      <p className="text-white font-bold text-2xl mt-auto p-3">{name}</p>
     </div>
   );
 }

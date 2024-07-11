@@ -1,7 +1,7 @@
 "use client";
 import { db, auth } from "../../firebase";
 import { FormEventHandler, useEffect, useState } from "react";
-import { Modal, Button } from "@mantine/core";
+import { Modal } from "@mantine/core";
 import {
   addDoc,
   getDocs,

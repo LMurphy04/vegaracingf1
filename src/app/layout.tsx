@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <MantineProvider>
           <Navbar />
-          <div className="mx-5 sm:mx-10 my-5">{children}</div>
+          <div className="mx-5 sm:mx-10 mb-5">{children}</div>
           <Footer />
         </MantineProvider>
       </body>

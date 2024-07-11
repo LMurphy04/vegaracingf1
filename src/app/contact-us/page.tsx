@@ -1,3 +1,5 @@
+import Title from "../title";
+
 export default function Home() {
-  return <p>Contact Us</p>;
+  return <Title title={"Contact Us"} />;
 }
