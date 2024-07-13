@@ -115,7 +115,7 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-5 sm:mx-10">
+    <>
       <Title title={"Admin Blog View"} />
       <AddPost
         heading={heading}
@@ -126,7 +126,7 @@ export default function Home() {
       />
       <Title title={"Blog Posts"} />
       <BlogDisplay />
-    </div>
+    </>
   );
 }
 

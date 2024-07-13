@@ -8,7 +8,7 @@ export default function MeetTheTeam() {
     membersInfo[0].name
   );
   return (
-    <div className="mx-5 sm:mx-10">
+    <>
       <Title title={"Meet the Team"} />
       <div className="flex flex-wrap">
         <ImageCollection tab={setActiveTab} />
@@ -46,7 +46,7 @@ export default function MeetTheTeam() {
           );
         })}
       </Tabs>
-    </div>
+    </>
   );
 }
 
@@ -75,10 +75,15 @@ function MemberImage({
 }) {
   return (
     <div
-      className={`${image} bg-center bg-no-repeat bg-cover basis-1/2 sm:flex-1 flex border-2 border-[#F5F5F5] h-[300px] sm:hover:flex-[2] sm:hover:border-b-vega-blue sm:hover:border-b-8 transition-all`}
+      className={`${image} group bg-center bg-no-repeat bg-cover basis-1/2 sm:flex-1 flex border-2 border-[#F5F5F5] h-[300px] sm:hover:flex-[2] duration-[1000ms] sm:hover:border-b-vega-blue sm:hover:border-b-8 transition-all`}
       onMouseOver={() => tab(name)}
     >
-      <p className="text-white font-bold text-2xl mt-auto p-3">{name}</p>
+      <div className="mt-auto p-3">
+        <p className="text-white font-bold text-2xl">{name}</p>
+        <p className="transition-all duration-[1000ms] sm:opacity-0 sm:text-[0px] group-hover:opacity-100 group-hover:text-sm text-white font-bold text-wrap">
+          {role}
+        </p>
+      </div>
     </div>
   );
 }

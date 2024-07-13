@@ -23,15 +23,13 @@ export default function Home() {
   const BlogDisplay = () => {
     if (blogPosts === null) {
       return (
-        <p className="font-semibold italic text-center text-white h-full py-10">
+        <p className="font-semibold italic text-center">
           Blog Posts Loading...
         </p>
       );
     } else if (blogPosts.length == 0) {
       return (
-        <p className="font-semibold italic text-center text-white h-full py-10">
-          No Posts Found!
-        </p>
+        <p className="font-semibold italic text-center">No Posts Found!</p>
       );
     }
     return (
@@ -45,15 +43,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="mx-5 sm:mx-10">
-        <Title title={"Blog"} />
-        <div className="flex">
-          <p className="italic bg-white mx-auto rounded-lg p-8 border-[1px] border-black">
-            Stay up to date with Vega Racing through our blog!
-          </p>
-        </div>
+      <Title title={"Blog"} />
+      <div className="flex">
+        <p className="mx-auto">
+          Stay up to date with Vega Racing through our blog!
+        </p>
       </div>
-      <div className="border-y-[1px] border-black shadow-inner justify-center break-words bg-vega-blue mt-8 py-5 px-5 sm:px-10 flex flex-col gap-5">
+      <div className="mx-[-20px] sm:mx-[-40px] justify-center break-words mt-8 flex flex-col gap-5">
         <BlogDisplay />
       </div>
     </>
@@ -85,7 +81,7 @@ function BlogPost({ post }: { post: any }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[2000ms] ease-out border-[1px] border-black shadow-xl delay-500 flex flex-col bg-[#FAFAFA] p-3 rounded-lg ${
+      className={`transition-all duration-[2000ms] ease-out border-black shadow-xl shadow-vega-blue delay-500 flex flex-col bg-[#FAFAFA] p-10 ${
         isVisible ? "" : "translate-x-[-100%] opacity-0"
       }`}
     >

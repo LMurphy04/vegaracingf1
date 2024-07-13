@@ -7,23 +7,6 @@ import { Menu } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { navigationItems } from "./navigation";
 
-// Page Logo
-
-function VegaLogoHeader() {
-  return (
-    <Link className="flex-32 justify-center" href="/">
-      <Image
-        src="/vega-colour.png"
-        width={180}
-        height={0}
-        alt="Vega Logo"
-        priority={true}
-        style={{ width: "100%", height: "auto" }}
-      />
-    </Link>
-  );
-}
-
 // Navbar (Expanded)
 
 function BigScreenNavBar() {
@@ -54,7 +37,7 @@ function BigScreenNavBar() {
 function NavButton({ title, url }: { title: string; url: string }) {
   return (
     <Link
-      className="flex-1 text-center content-center h-10 hover:bg-vega-blue hover:text-white"
+      className="flex-1 text-center content-center h-10 hover:bg-vega-blue hover:text-white border-l-[1px] border-black"
       href={url}
     >
       {title}
@@ -114,15 +97,24 @@ function DropdownButton({ title, url }: { title: string; url: string }) {
 export default function Header() {
   return (
     <>
-      <div className="flex justify-center mx-5 sm:mx-10 my-5">
+      <div className="flex justify-center px-5 sm:px-10 py-5 gap-10">
         <div className="flex-1 sm:hidden"></div>
-        <VegaLogoHeader />
+        <Link className="flex-32 sm:block justify-center" href="/">
+          <Image
+            src="/vega-colour.png"
+            width={180}
+            height={0}
+            alt="Vega Logo"
+            priority={true}
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Link>
         <div className="flex-1 flex sm:hidden">
           <SmallScreenDropdownNav />
         </div>
-      </div>
-      <div className="hidden sm:flex mx-10 border-2 border-black font-semibold bg-[#E6E6E6]">
-        <BigScreenNavBar />
+        <div className="hidden sm:flex grow font-semibold h-auto items-center">
+          <BigScreenNavBar />
+        </div>
       </div>
     </>
   );

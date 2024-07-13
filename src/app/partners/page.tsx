@@ -6,7 +6,7 @@ import "@mantine/carousel/styles.css";
 
 export default function Home() {
   return (
-    <div className="mx-5 sm:mx-10">
+    <>
       <Title title={"Partners"} />
       <div className="flex flex-col gap-10 justify-center">
         <TierHeading title={"P1 Sponsors"} />
@@ -62,7 +62,7 @@ export default function Home() {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -158,7 +158,7 @@ function P3Card({
       <a
         href={sponsor.website}
         target="_blank"
-        className="bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-col p-5 gap-3 h-full"
+        className="w-[230px] bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-col p-5 gap-3 h-full"
       >
         <div className="flex basis-1/2">
           <div className="max-h-[100px] max-w-[100px] m-auto">
