@@ -37,7 +37,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <>
+    <div className="mx-5 sm:mx-10">
       <Title title={"Admin Login"} />
       <ErrorBlock errorMessage={error} />
       <LoginForm
@@ -47,7 +47,7 @@ export default function AdminLogin() {
         setPassword={setPassword}
         handleLogin={handleLogin}
       />
-    </>
+    </div>
   );
 }
 

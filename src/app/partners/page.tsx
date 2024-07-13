@@ -6,7 +6,7 @@ import "@mantine/carousel/styles.css";
 
 export default function Home() {
   return (
-    <>
+    <div className="mx-5 sm:mx-10">
       <Title title={"Partners"} />
       <div className="flex flex-col gap-10 justify-center">
         <TierHeading title={"P1 Sponsors"} />
@@ -15,12 +15,13 @@ export default function Home() {
           loop
           controlSize={40}
           controlsOffset="xl"
-          slideSize={{ base: "60%" }}
+          slideSize={{ base: "60%", sm: "600px", md: "800px" }}
           initialSlide={Math.floor(Math.random() * 3)}
           classNames={{
             slide:
-              "bg-white border-[1px] border-black rounded-xl mx-10 min-h-[300px] shadow-2xl flex flex-col md:flex-row p-5",
+              "my-10 bg-white border-[1px] border-black rounded-xl mx-10 h-[350px] md:h-[300px] shadow-lg flex flex-col md:flex-row p-5 hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer",
             indicator: "bg-vega-blue",
+            root: "mx-[-20px] sm:mx-[-40px]",
           }}
         >
           {P1Sponsors.map((sponsor, index) => {
@@ -28,45 +29,40 @@ export default function Home() {
           })}
         </Carousel>
         <TierHeading title={"P2 Sponsors"} />
-        <div className="flex flex-col gap-5 md:flex-row md:gap-0 flex-wrap">
+        <div className="flex gap-5 flex-row flex-wrap">
           {P2Sponsors.map((sponsor, index) => {
             return <P2Card sponsor={sponsor} key={index} />;
           })}
         </div>
         <TierHeading title={"P3 Sponsors"} />
-        <div className="flex gap-y-5 flex-row flex-wrap">
+        <div className="flex gap-5 flex-row flex-wrap">
           {P3Sponsors.map((sponsor, index) => {
             return <P3Card sponsor={sponsor} key={index} />;
           })}
         </div>
         <TierHeading title={"P4 Sponsors"} />
-        <div className="flex gap-5 flex-row flex-wrap mb-5 mx-20">
+        <div className="flex gap-5 flex-row flex-wrap mb-8 mx-20 bg-white border-[1px] border-black rounded-xl my-auto">
           {P4Sponsors.map((sponsor, index) => {
             return (
-              <div
+              <a
                 key={index}
-                className="bg-white border-[1px] border-black rounded-xl basis-1/8 flex p-5 items-center mx-auto"
+                href={sponsor.website}
+                target="_blank"
+                className="basis-1/8 flex p-5 items-center mx-auto"
               >
-                <a
-                  className="m-auto max-w-[250px] max-h-[250px]"
-                  href={sponsor.website}
-                  target="_blank"
-                >
-                  <Image
-                    src={`/partners/${sponsor.image}`}
-                    width={75}
-                    height={75}
-                    alt={`${sponsor.name} Logo`}
-                    priority={true}
-                    className="my-auto"
-                  />
-                </a>
-              </div>
+                <Image
+                  src={`/partners/${sponsor.image}`}
+                  width={75}
+                  height={75}
+                  alt={`${sponsor.name} Logo`}
+                  priority={true}
+                />
+              </a>
             );
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -83,37 +79,33 @@ function TierHeading({ title }: { title: string }) {
 function P1Slide({
   sponsor,
 }: {
-  sponsor: { name: string; image: string; website: string; location: string };
+  sponsor: { name: string; image: string; website: string };
 }) {
   return (
-    <Carousel.Slide>
-      <div className="flex flex-1 justify-center">
-        <a
-          className="m-auto max-w-[250px] max-h-[250px]"
-          href={sponsor.website}
-          target="_blank"
-        >
+    <Carousel.Slide
+      onClick={() => {
+        window.open(`${sponsor.website}`, "_blank");
+      }}
+    >
+      <div className="flex basis-1/2">
+        <div className="m-auto max-w-[250px] max-h-[250px]">
           <Image
             src={`/partners/${sponsor.image}`}
             width={250}
             height={250}
             alt={`${sponsor.name} Logo`}
             priority={true}
+            style={{ width: "100%", height: "auto" }}
           />
-        </a>
+        </div>
       </div>
-      <div className="flex-1 flex flex-col items-center my-auto md:border-l-[1px] border-black mx-auto">
-        <p className="text-3xl font-bold border-b-[1px] border-black pb-2 mb-2 text-center">
-          {sponsor.name}
-        </p>
-        <p>{sponsor.location}</p>
-        <a
-          target="_blank"
-          className="italic hover:cursor"
-          href={sponsor.website}
-        >
-          {sponsor.website}
-        </a>
+      <div className="basis-1/2 flex flex-col items-center my-auto md:border-l-[1px] border-black mx-auto">
+        <div className="my-auto flex flex-col">
+          <p className="text-3xl font-bold border-b-[1px] border-black pb-2 mb-2 text-center">
+            {sponsor.name}
+          </p>
+          <p className="italic mx-auto">{sponsor.website}</p>
+        </div>
       </div>
     </Carousel.Slide>
   );
@@ -122,40 +114,36 @@ function P1Slide({
 function P2Card({
   sponsor,
 }: {
-  sponsor: { name: string; image: string; website: string; location: string };
+  sponsor: { name: string; image: string; website: string };
 }) {
   return (
-    <div className="w-max mx-auto md:p-0 md:basis-1/2 my-auto md:my-5">
-      <div className="bg-white border-[1px] border-black rounded-xl mx-20 min-h-[200px] shadow-2xl flex flex-col lg:flex-row p-5 gap-3 lg:gap-0">
-        <div className="flex flex-1 justify-center">
-          <a
-            className="m-auto max-w-[150px] max-h-[150px]"
-            href={sponsor.website}
-            target="_blank"
-          >
+    <div className="w-max mx-auto h-[200px]">
+      <a
+        href={sponsor.website}
+        target="_blank"
+        className="w-[450px] h-[200px] bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-row p-4 gap-3 h-full"
+      >
+        <div className="flex basis-1/2">
+          <div className="m-auto max-w-[150px] max-h-[150px]">
             <Image
               src={`/partners/${sponsor.image}`}
               width={150}
               height={150}
               alt={`${sponsor.name} Logo`}
               priority={true}
+              style={{ width: "100%", height: "auto" }}
             />
-          </a>
+          </div>
         </div>
-        <div className="flex-1 flex flex-col items-center my-auto lg:border-l-[1px] border-black mx-auto p-2">
+        <div className="flex-1 flex flex-col items-center border-l-[1px] border-black my-auto mx-auto p-4">
           <p className="text-2xl font-bold border-b-[1px] border-black pb-2 mb-2 text-center">
             {sponsor.name}
           </p>
-          <p className="text-center">{sponsor.location}</p>
-          <a
-            target="_blank"
-            className="italic hover:cursor text-xs"
-            href={sponsor.website}
-          >
+          <p className="italic hover:cursor text-xs text-center">
             {sponsor.website}
-          </a>
+          </p>
         </div>
-      </div>
+      </a>
     </div>
   );
 }
@@ -163,32 +151,33 @@ function P2Card({
 function P3Card({
   sponsor,
 }: {
-  sponsor: { name: string; image: string; website: string; location: string };
+  sponsor: { name: string; image: string; website: string };
 }) {
   return (
-    <div className="w-max mx-auto md:p-0 md:basis-1/4 my-auto">
-      <div className="bg-white border-[1px] border-black rounded-xl mx-10 shadow-2xl flex flex-col p-5 gap-3">
-        <div className="flex flex-1 justify-center">
-          <a
-            className="m-auto max-w-[100px] max-h-[100px]"
-            href={sponsor.website}
-            target="_blank"
-          >
+    <div className="w-max mx-auto w-[230px] h-[230px]">
+      <a
+        href={sponsor.website}
+        target="_blank"
+        className="bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-col p-5 gap-3 h-full"
+      >
+        <div className="flex basis-1/2">
+          <div className="max-h-[100px] max-w-[100px] m-auto">
             <Image
               src={`/partners/${sponsor.image}`}
               width={100}
               height={100}
               alt={`${sponsor.name} Logo`}
               priority={true}
+              style={{ width: "100%", height: "auto" }}
             />
-          </a>
+          </div>
         </div>
         <div className="flex-1 flex flex-col items-center my-auto border-t-[1px] border-black mx-auto p-2">
           <p className="text-xl font-bold text-center my-auto">
             {sponsor.name}
           </p>
         </div>
-      </div>
+      </a>
     </div>
   );
 }
@@ -198,99 +187,84 @@ const P1Sponsors = [
     name: "Stellar Omada",
     image: "stellar_logo.png",
     website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
   },
   {
     name: "CBS Consulting",
     image: "cbs_logo.jpg",
     website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
   },
   {
     name: "Alan Steel",
     image: "alan_steel_logo.webp",
     website: "https://www.alansteel.com/",
-    location: "Linlithgow, Scotland",
   },
 ];
 
 const P2Sponsors = [
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "CGI",
+    image: "cgi.png",
+    website: "https://www.cgi.com/uk/en-gb",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Rabbie's Tours",
+    image: "rabbies_blue.jpeg",
+    website: "https://www.rabbies.com/en",
   },
 ];
 
 const P3Sponsors = [
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "LCDT",
+    image: "lcdt.png",
+    website: "https://trust-linlithgow.org.uk/",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Linlith-Go-Solar",
+    image: "lgs.png",
+    website: "https://trust-linlithgow.org.uk/projects/linlithgosolar/",
   },
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Green Fox",
+    image: "green_fox.png",
+    website: "https://www.greenfoxenergy.co.uk/",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Calnex",
+    image: "calnex.png",
+    website: "https://calnexsol.com/",
   },
 ];
 
 const P4Sponsors = [
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "XARA",
+    image: "xara.webp",
+    website: "https://www.xara.com/",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "NMIS",
+    image: "nmis.png",
+    website: "https://www.nmis.scot/",
   },
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Scot's Bearings",
+    image: "scots.jpg",
+    website: "https://www.scots-bearings.co.uk/",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Lugo",
+    image: "lugo.jpg",
+    website: "https://lugoit.co.uk/",
   },
   {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-    website: "https://stellaruk.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "Deans Engineering",
+    image: "deans.jpg",
+    website: "http://www.deansengineering.com/",
   },
   {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-    website: "https://www.cbsconsulting.co.uk/",
-    location: "Edinburgh, Scotland",
+    name: "One Linlithgow",
+    image: "one_linlithgow.jpg",
+    website: "https://www.onelinlithgow.com/",
   },
 ];

@@ -23,15 +23,15 @@ export default function Home() {
   const BlogDisplay = () => {
     if (blogPosts === null) {
       return (
-        <div className="p-5 font-semibold italic flex flex-col text-center justify-center break-words">
+        <p className="font-semibold italic text-center text-white h-full py-10">
           Blog Posts Loading...
-        </div>
+        </p>
       );
     } else if (blogPosts.length == 0) {
       return (
-        <div className="p-5 font-semibold italic flex justify-center break-words">
+        <p className="font-semibold italic text-center text-white h-full py-10">
           No Posts Found!
-        </div>
+        </p>
       );
     }
     return (
@@ -45,13 +45,17 @@ export default function Home() {
 
   return (
     <>
-      <Title title={"Blog"} />
-      <div className="flex">
-        <p className="italic bg-white mx-auto rounded-lg p-8 border-[1px] border-black">
-          Stay up to date with Vega Racing through our blog!
-        </p>
+      <div className="mx-5 sm:mx-10">
+        <Title title={"Blog"} />
+        <div className="flex">
+          <p className="italic bg-white mx-auto rounded-lg p-8 border-[1px] border-black">
+            Stay up to date with Vega Racing through our blog!
+          </p>
+        </div>
       </div>
-      <BlogDisplay />
+      <div className="border-y-[1px] border-black shadow-inner justify-center break-words bg-vega-blue mt-8 py-5 px-5 sm:px-10 flex flex-col gap-5">
+        <BlogDisplay />
+      </div>
     </>
   );
 }
@@ -81,7 +85,7 @@ function BlogPost({ post }: { post: any }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[2000ms] ease-out border-b-[1px] border-black shadow-xl shadow-vega-pink-light delay-500 my-10 flex flex-col bg-[#FAFAFA] p-3 rounded-lg ${
+      className={`transition-all duration-[2000ms] ease-out border-[1px] border-black shadow-xl delay-500 flex flex-col bg-[#FAFAFA] p-3 rounded-lg ${
         isVisible ? "" : "translate-x-[-100%] opacity-0"
       }`}
     >

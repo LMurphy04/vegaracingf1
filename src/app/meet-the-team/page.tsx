@@ -8,7 +8,7 @@ export default function MeetTheTeam() {
     membersInfo[0].name
   );
   return (
-    <>
+    <div className="mx-5 sm:mx-10">
       <Title title={"Meet the Team"} />
       <div className="flex flex-wrap">
         <ImageCollection tab={setActiveTab} />
@@ -46,7 +46,7 @@ export default function MeetTheTeam() {
           );
         })}
       </Tabs>
-    </>
+    </div>
   );
 }
 

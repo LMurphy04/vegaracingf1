@@ -115,7 +115,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="mx-5 sm:mx-10">
       <Title title={"Admin Blog View"} />
       <AddPost
         heading={heading}
@@ -126,7 +126,7 @@ export default function Home() {
       />
       <Title title={"Blog Posts"} />
       <BlogDisplay />
-    </>
+    </div>
   );
 }
 
@@ -167,7 +167,7 @@ function AddPost({
       <div className="flex flex-col">
         <label htmlFor="body">Body:</label>
         <textarea
-          className="border-2 border-black grow rounded-md p-1 whitespace-pre resize-none"
+          className="border-2 border-black grow rounded-md p-1 whitespace-pre text-wrap resize-none overflow-x-hidden"
           id="body"
           value={body}
           rows={5}
@@ -193,7 +193,8 @@ function BlogPost({
   handleDelete: Function;
   handleEdit: Function;
 }) {
-  const [opened, setOpened] = useState(false);
+  const [editOpened, setEditOpened] = useState(false);
+  const [deleteOpened, setDeleteOpened] = useState(false);
   const [body, setBody] = useState(post.body);
   const [heading, setHeading] = useState(post.heading);
 
@@ -218,13 +219,13 @@ function BlogPost({
         </div>
         <div className="flex flex-row gap-2 border-t-2 pt-2 border-black">
           <button
-            onClick={() => setOpened(true)}
+            onClick={() => setEditOpened(true)}
             className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white"
           >
             Edit
           </button>
           <button
-            onClick={() => handleDelete(post)}
+            onClick={() => setDeleteOpened(true)}
             className="flex-1 text-black px-3 py-1 border-2 border-black font-semibold bg-[#E6E6E6] hover:bg-vega-blue hover:text-white"
           >
             Delete
@@ -232,9 +233,9 @@ function BlogPost({
         </div>
       </div>
       <Modal
-        opened={opened}
+        opened={editOpened}
         onClose={() => {
-          setOpened(false);
+          setEditOpened(false);
           setBody(post.body);
           setHeading(post.heading);
         }}
@@ -269,7 +270,7 @@ function BlogPost({
           </div>
           <button
             onClick={() => {
-              setOpened(false);
+              setEditOpened(false);
               handleEdit(post, heading, body);
             }}
             className="px-3 py-1 border-2 border-black font-semibold bg-white hover:bg-vega-blue hover:text-white"
@@ -277,6 +278,33 @@ function BlogPost({
             Confirm
           </button>
         </div>
+      </Modal>
+      <Modal
+        opened={deleteOpened}
+        onClose={() => {
+          setDeleteOpened(false);
+        }}
+        title="Delete Post"
+        centered
+        classNames={{
+          title: "font-semibold underline text-white underline-offset-2",
+          content: "bg-red-500",
+          header: "bg-red-500",
+          close: "text-white hover:text-black",
+        }}
+      >
+        <p className="text-center text-wrap mb-5 italic text-white">
+          Are you sure you want to delete this post?
+        </p>
+        <button
+          onClick={() => {
+            setDeleteOpened(false);
+            handleDelete(post);
+          }}
+          className="px-3 py-1 border-2 border-black font-semibold bg-white hover:bg-vega-blue hover:text-white w-full"
+        >
+          Confirm
+        </button>
       </Modal>
     </>
   );
