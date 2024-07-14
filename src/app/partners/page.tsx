@@ -225,7 +225,7 @@ const P3Sponsors = [
     website: "https://trust-linlithgow.org.uk/projects/linlithgosolar/",
   },
   {
-    name: "Green Fox",
+    name: "GreenFox Energy",
     image: "green_fox.png",
     website: "https://www.greenfoxenergy.co.uk/",
   },

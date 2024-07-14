@@ -14,7 +14,7 @@ function BigScreenNavBar() {
     return item.submenu ? (
       <Menu trigger="hover" classNames={{ item: "p-0" }} key={item.id}>
         <Menu.Target>
-          <div className="flex-1 text-center content-center h-10 hover:cursor-pointer hover:bg-vega-blue hover:text-white">
+          <div className="ml-auto flex-1 text-center content-center h-full hover:cursor-pointer hover:bg-vega-blue hover:text-white max-w-[150px]">
             {item.title}
           </div>
         </Menu.Target>
@@ -37,7 +37,7 @@ function BigScreenNavBar() {
 function NavButton({ title, url }: { title: string; url: string }) {
   return (
     <Link
-      className="flex-1 text-center content-center h-10 hover:bg-vega-blue hover:text-white border-l-[1px] border-black"
+      className="flex-1 text-center content-center h-full hover:bg-vega-blue hover:text-white border-l-[1px] border-black max-w-[150px]"
       href={url}
     >
       {title}
@@ -102,7 +102,7 @@ export default function Header() {
         <Link className="flex-32 sm:block justify-center" href="/">
           <Image
             src="/vega-colour.png"
-            width={180}
+            width={120}
             height={0}
             alt="Vega Logo"
             priority={true}
@@ -112,7 +112,7 @@ export default function Header() {
         <div className="flex-1 flex sm:hidden">
           <SmallScreenDropdownNav />
         </div>
-        <div className="hidden sm:flex grow font-semibold h-auto items-center">
+        <div className="hidden sm:flex grow font-semibold h-auto">
           <BigScreenNavBar />
         </div>
       </div>
