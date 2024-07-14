@@ -29,7 +29,9 @@ export default function Home() {
       );
     } else if (blogPosts.length == 0) {
       return (
-        <p className="font-semibold italic text-center">No Posts Found!</p>
+        <p className="font-semibold italic text-center">
+          No Posts Found, Check Connection and Reload!
+        </p>
       );
     }
     return (
@@ -45,11 +47,11 @@ export default function Home() {
     <>
       <Title title={"Blog"} />
       <div className="flex">
-        <p className="mx-auto">
+        <p className="mx-auto font-semibold italic">
           Stay up to date with Vega Racing through our blog!
         </p>
       </div>
-      <div className="mx-[-20px] sm:mx-[-40px] justify-center break-words mt-8 flex flex-col gap-5">
+      <div className="mx-[-20px] sm:mx-[-40px] justify-center break-words my-8 flex flex-col gap-5">
         <BlogDisplay />
       </div>
     </>
@@ -81,7 +83,7 @@ function BlogPost({ post }: { post: any }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[2000ms] ease-out border-black shadow-xl shadow-vega-blue delay-500 flex flex-col bg-[#FAFAFA] p-10 ${
+      className={`transition-all duration-[2000ms] ease-out border-black shadow-lg shadow-vega-blue delay-500 flex flex-col bg-[#FAFAFA] p-10 ${
         isVisible ? "" : "translate-x-[-100%] opacity-0"
       }`}
     >

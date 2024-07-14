@@ -1,3 +1,5 @@
+import Title from "../title";
+
 export default function Home() {
-  return <p>Car Museum</p>;
+  return <Title title="Car Museum" />;
 }

@@ -12,7 +12,11 @@ import { navigationItems } from "./navigation";
 function BigScreenNavBar() {
   const NavButtons = navigationItems.map((item) => {
     return item.submenu ? (
-      <Menu trigger="hover" classNames={{ item: "p-0" }} key={item.id}>
+      <Menu
+        trigger="hover"
+        classNames={{ item: "p-0 hover:bg-vega-blue hover:text-white" }}
+        key={item.id}
+      >
         <Menu.Target>
           <div className="ml-auto flex-1 text-center content-center h-full hover:cursor-pointer hover:bg-vega-blue hover:text-white max-w-[150px]">
             {item.title}

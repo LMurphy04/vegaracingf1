@@ -13,3 +13,11 @@
     background-size: cover;
     background-blend-mode: lighten;
   }
+
+.indicator {
+    transition: width 250ms ease;
+  
+    &[data-active] {
+      width: 40px;
+    }
+  }

@@ -1,3 +1,5 @@
+import Title from "../title";
+
 export default function Home() {
-  return <p>Vega Inspire</p>;
+  return <Title title="Vega Inspire" />;
 }

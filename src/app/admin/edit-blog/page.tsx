@@ -241,7 +241,10 @@ function BlogPost({
         }}
         title="Edit Post"
         centered
-        classNames={{ title: "font-semibold underline underline-offset-2" }}
+        classNames={{
+          title: "font-semibold underline underline-offset-2",
+          inner: "left-0",
+        }}
       >
         <div className="flex flex-col gap-3">
           <div className="flex flex-col">
@@ -291,6 +294,7 @@ function BlogPost({
           content: "bg-red-500",
           header: "bg-red-500",
           close: "text-white hover:text-black",
+          inner: "left-0",
         }}
       >
         <p className="text-center text-wrap mb-5 italic text-white">

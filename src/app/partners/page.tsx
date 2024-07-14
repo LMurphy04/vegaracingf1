@@ -8,6 +8,11 @@ export default function Home() {
   return (
     <>
       <Title title={"Partners"} />
+      <p className="mb-5 text-center font-semibold italic">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt
+        eros vel lacinia pharetra. Sed eu lectus vitae arcu ornare malesuada. In
+        a lectus odio.
+      </p>
       <div className="flex flex-col gap-10 justify-center">
         <TierHeading title={"P1 Sponsors"} />
         <Carousel
@@ -15,12 +20,13 @@ export default function Home() {
           loop
           controlSize={40}
           controlsOffset="xl"
+          speed={1}
           slideSize={{ base: "60%" }}
           initialSlide={Math.floor(Math.random() * 3)}
           classNames={{
             slide:
               "my-10 bg-white border-[1px] border-black rounded-xl mx-10 h-[350px] md:h-[300px] shadow-lg flex flex-col md:flex-row p-5 hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer",
-            indicator: "bg-vega-blue",
+            indicator: "bg-vega-blue indicator",
             root: "mx-[-20px] sm:mx-[-40px]",
           }}
         >
@@ -28,18 +34,51 @@ export default function Home() {
             return <P1Slide sponsor={sponsor} key={index} />;
           })}
         </Carousel>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          tincidunt eros vel lacinia pharetra. Sed eu lectus vitae arcu ornare
+          malesuada. In a lectus odio. Praesent vel ullamcorper est, nec commodo
+          urna. Aenean congue ex accumsan, vestibulum nisl facilisis, semper
+          massa. Vestibulum tincidunt congue libero. Suspendisse ac sodales
+          nisl, a vehicula erat. Aenean eu interdum urna. Mauris bibendum sem a
+          hendrerit commodo. Nam vitae mi quis massa venenatis dictum mollis sed
+          eros. Sed tortor lorem, tristique a sem a, molestie tincidunt tortor.
+          In hac habitasse platea dictumst.
+        </p>
         <TierHeading title={"P2 Sponsors"} />
         <div className="flex gap-5 flex-row flex-wrap">
           {P2Sponsors.map((sponsor, index) => {
             return <P2Card sponsor={sponsor} key={index} />;
           })}
         </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          tincidunt eros vel lacinia pharetra. Sed eu lectus vitae arcu ornare
+          malesuada. In a lectus odio. Praesent vel ullamcorper est, nec commodo
+          urna. Aenean congue ex accumsan, vestibulum nisl facilisis, semper
+          massa. Vestibulum tincidunt congue libero. Suspendisse ac sodales
+          nisl, a vehicula erat. Aenean eu interdum urna. Mauris bibendum sem a
+          hendrerit commodo. Nam vitae mi quis massa venenatis dictum mollis sed
+          eros. Sed tortor lorem, tristique a sem a, molestie tincidunt tortor.
+          In hac habitasse platea dictumst.
+        </p>
         <TierHeading title={"P3 Sponsors"} />
         <div className="flex gap-5 flex-row flex-wrap">
           {P3Sponsors.map((sponsor, index) => {
             return <P3Card sponsor={sponsor} key={index} />;
           })}
         </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          tincidunt eros vel lacinia pharetra. Sed eu lectus vitae arcu ornare
+          malesuada. In a lectus odio. Praesent vel ullamcorper est, nec commodo
+          urna. Aenean congue ex accumsan, vestibulum nisl facilisis, semper
+          massa. Vestibulum tincidunt congue libero. Suspendisse ac sodales
+          nisl, a vehicula erat. Aenean eu interdum urna. Mauris bibendum sem a
+          hendrerit commodo. Nam vitae mi quis massa venenatis dictum mollis sed
+          eros. Sed tortor lorem, tristique a sem a, molestie tincidunt tortor.
+          In hac habitasse platea dictumst.
+        </p>
         <TierHeading title={"P4 Sponsors"} />
         <div className="flex gap-5 flex-row flex-wrap mb-8 mx-20 bg-white border-[1px] border-black rounded-xl my-auto">
           {P4Sponsors.map((sponsor, index) => {
@@ -68,10 +107,10 @@ export default function Home() {
 
 function TierHeading({ title }: { title: string }) {
   return (
-    <div className="flex flex-row gap-3 ">
-      <span className="grow border-b-[1px] border-black my-auto"></span>
+    <div className="flex flex-row gap-3 text-lg font-semibold">
+      <span className="grow border-[1px] border-black my-auto"></span>
       <p>{title}</p>
-      <span className="grow border-b-[1px] border-black my-auto"></span>
+      <span className="grow border-[1px] border-black my-auto"></span>
     </div>
   );
 }
@@ -99,7 +138,7 @@ function P1Slide({
           />
         </div>
       </div>
-      <div className="basis-1/2 flex flex-col items-center my-auto md:border-l-[1px] border-black mx-auto">
+      <div className="basis-1/2 flex flex-col items-center my-auto md:border-l-[1px] border-black mx-auto p-2">
         <div className="my-auto flex flex-col">
           <p className="text-3xl font-bold border-b-[1px] border-black pb-2 mb-2 text-center">
             {sponsor.name}
