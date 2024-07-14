@@ -97,7 +97,7 @@ function DropdownButton({ title, url }: { title: string; url: string }) {
 export default function Header() {
   return (
     <>
-      <div className="flex justify-center px-5 sm:px-10 py-5 gap-10">
+      <div className="flex justify-center px-5 sm:px-10 py-5 gap-10 w-full">
         <div className="flex-1 sm:hidden"></div>
         <Link className="flex-32 sm:block justify-center" href="/">
           <Image

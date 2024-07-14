@@ -15,7 +15,7 @@ export default function Home() {
           loop
           controlSize={40}
           controlsOffset="xl"
-          slideSize={{ base: "60%", sm: "600px", md: "800px" }}
+          slideSize={{ base: "60%" }}
           initialSlide={Math.floor(Math.random() * 3)}
           classNames={{
             slide:
