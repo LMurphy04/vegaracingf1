@@ -80,7 +80,7 @@ function MemberImage({
     >
       <div className="mt-auto p-3">
         <p className="text-white font-bold text-2xl">{name}</p>
-        <p className="transition-all duration-[1000ms] sm:opacity-0 sm:text-[0px] group-hover:opacity-100 group-hover:text-sm text-white font-bold text-wrap">
+        <p className="transition-all duration-[1000ms] sm:opacity-0 sm:text-[0px] group-hover:opacity-100 group-hover:text-base text-white font-bold text-wrap">
           {role}
         </p>
       </div>
