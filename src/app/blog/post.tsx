@@ -1,16 +1,19 @@
 "use client";
-
-import { Timestamp } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
 export default function BlogPost({
-  post,
+  heading,
+  body,
+  seconds,
 }: {
-  post: { id: string; heading: string; date: Timestamp; body: string };
+  heading: string;
+  body: string;
+  seconds: number;
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
+  //toggle visibility once loaded on screen
   useEffect(() => {
     const scrollObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
@@ -22,8 +25,9 @@ export default function BlogPost({
     scrollObserver.observe(ref.current);
   }, []);
 
-  function convertTimestampToString(date: Timestamp) {
-    const jsDate = new Date(date.seconds);
+  //converts seconds to dd/mm/yyyy string format
+  function convertSecondsToString(seconds: number) {
+    const jsDate = new Date(seconds * 1000);
     const dd = String(jsDate.getDate()).padStart(2, "0");
     const mm = String(jsDate.getMonth() + 1).padStart(2, "0");
     const yyyy = String(jsDate.getFullYear()).padStart(2, "0");
@@ -37,12 +41,12 @@ export default function BlogPost({
         isVisible ? "" : "translate-x-[-100%] opacity-0"
       }`}
     >
-      <p className="text-md font-bold">{post.heading}</p>
+      <p className="text-md font-bold">{heading}</p>
       <p className="bg-white border-[1px] border-black p-3 rounded-lg my-3 whitespace-pre text-wrap">
-        {post.body}
+        {body}
       </p>
       <p className="flex-1 text-right italic">
-        {convertTimestampToString(post.date)}
+        {convertSecondsToString(seconds)}
       </p>
     </div>
   );

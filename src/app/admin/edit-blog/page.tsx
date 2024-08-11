@@ -14,7 +14,7 @@ import {
 import { useRouter } from "next/navigation";
 import Title from "../../title";
 
-export default function Home() {
+export default function AdminBlogView() {
   const [body, setBody] = useState("");
   const [heading, setHeading] = useState("");
   const [blogPosts, setBlogPosts] = useState<any>([]);

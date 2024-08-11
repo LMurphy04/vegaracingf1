@@ -11,7 +11,8 @@ const config: Config = {
       colors: {
         "vega-blue": "#2d467c",
         "vega-pink": "#fa06a6",
-        "vega-pink-light": "#fecded"
+        "vega-pink-light": "#fecded",
+        "background": "#F5F5F5"
       },
     },
   },

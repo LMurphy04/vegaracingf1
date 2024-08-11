@@ -1,21 +1,20 @@
 import Title from "../title";
-import { collection, getDocs, Timestamp } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import BlogPost from "./post";
 
-export default async function Home() {
-  var data: {}[];
-
+export default async function Blog() {
   async function fetchBlogPosts() {
     const querySnapshot = await getDocs(collection(db, "blog"));
-    data = querySnapshot.docs.map((doc) => ({
+    var data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
     data.sort((a, b) => b.date - a.date);
+    return data;
   }
 
-  await fetchBlogPosts();
+  var data: {}[] = await fetchBlogPosts();
 
   const BlogDisplay = () => {
     if (data === null) {
@@ -26,7 +25,14 @@ export default async function Home() {
     return (
       <>
         {data?.map((post: any, index: number) => {
-          return <BlogPost key={index} post={post} />;
+          return (
+            <BlogPost
+              key={index}
+              heading={post.heading}
+              body={post.body}
+              seconds={post.date.seconds}
+            />
+          );
         })}
       </>
     );

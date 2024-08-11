@@ -1,43 +1,41 @@
 "use client";
 import Title from "../title";
-import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  OrbitControls,
-  useGLTF,
-  Stage,
-  PresentationControls,
-  Center,
-  CameraControls,
-  useFBX,
-} from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Center, useFBX } from "@react-three/drei";
 import { Switch, Group } from "@mantine/core";
-import { useRef, useState } from "react";
-import { PI } from "three/examples/jsm/nodes/Nodes.js";
+import { useState } from "react";
 
 export default function Home() {
-  const [rotate, setRotate] = useState(true);
+  const [rotate, setRotate] = useState(false);
   const [car, setCar] = useState(0);
   const [mode3D, set3D] = useState(true);
   const [info, setInfo] = useState(false);
 
-  const car1 = useFBX("models/1 - Vega Dev Regionals.fbx");
-  const car2 = useFBX("models/2 - Vega Dev Nationals.fbx");
-  const car3 = useFBX("models/3 - Vega Pro Regionals.fbx");
-  const car4 = useFBX("models/4 - Vega Pro Nationals.fbx");
-
   const cars = [
-    { name: "Vega Dev Regionals", model: car1 },
-    { name: "Vega Dev Nationals", model: car2 },
-    { name: "Vega Pro Regionals", model: car3 },
-    { name: "Vega Pro Nationals", model: car4 },
+    {
+      name: "Vega Dev Regionals",
+      model: useFBX("models/vega_dev_regionals.fbx"),
+    },
+    {
+      name: "Vega Dev Nationals",
+      model: useFBX("models/vega_dev_nationals.fbx"),
+    },
+    {
+      name: "Vega Pro Regionals",
+      model: useFBX("models/vega_pro_regionals.fbx"),
+    },
+    {
+      name: "Vega Pro Nationals",
+      model: useFBX("models/vega_pro_nationals.fbx"),
+    },
   ];
 
   return (
     <>
       <Title title="Car Museum" />
-      <div className="relative mb-5 shadow-xl">
+      <div className="relative mb-5 shadow-xl grow">
         <div
-          className={`absolute top-0 w-full h-[30rem] bg-white transition-all duration-1000 ${
+          className={`absolute top-0 w-full bg-white transition-all duration-1000 ${
             mode3D ? "opacity-0" : "opacity-100"
           }`}
         >
@@ -45,7 +43,7 @@ export default function Home() {
         </div>
         <Canvas
           dpr={[1, 2]}
-          className={`w-full h-[30rem] bg-black touch-none transition-all duration-1000 ${
+          className={`w-full h-full bg-black touch-none transition-all duration-1000 ${
             mode3D ? "opacity-100" : "opacity-0"
           }`}
           camera={{ fov: 45, position: [-10, 10, 30] }}
@@ -60,7 +58,7 @@ export default function Home() {
             enablePan={false}
             enableRotate={mode3D}
           />
-          <ambientLight intensity={0.25} />
+          <hemisphereLight intensity={0.2} groundColor="black" />
           <spotLight
             position={[20, 30, 20]}
             angle={0.4}
@@ -94,7 +92,7 @@ export default function Home() {
           })}
         </Canvas>
         <div
-          className={`absolute top-0 start-0 bg-white h-[30rem] bg-gray-800 flex flex-col transition-all duration-1000  ${
+          className={`absolute top-0 start-0 h-full bg-gray-800 flex flex-col transition-all duration-1000  ${
             mode3D ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -168,5 +166,3 @@ export default function Home() {
     </>
   );
 }
-
-useGLTF.preload("/models/bmw.glb");
