@@ -15,31 +15,49 @@ export default function Home() {
     {
       name: "Vega Dev Regionals",
       model: useFBX("models/vega_dev_regionals.fbx"),
+      stats: ["Fastest & Best Engineered Car"],
     },
     {
       name: "Vega Dev Nationals",
       model: useFBX("models/vega_dev_nationals.fbx"),
+      stats: [
+        "2nd Fastest Car",
+        "Nominated for best engineered car & scrutineering award",
+      ],
     },
     {
       name: "Vega Pro Regionals",
       model: useFBX("models/vega_pro_regionals.fbx"),
+      stats: ["Fastest & Best Engineered Car"],
     },
     {
       name: "Vega Pro Nationals",
       model: useFBX("models/vega_pro_nationals.fbx"),
+      stats: [
+        "Scottish Champions & 2nd in the UK (overall)",
+        "3rd Fastest Track Time",
+      ],
     },
   ];
 
   return (
     <>
       <Title title="Car Museum" />
-      <div className="relative mb-5 shadow-xl grow">
+      <div className="relative shadow-xl grow">
         <div
-          className={`absolute top-0 w-full bg-white transition-all duration-1000 ${
+          className={`absolute top-0 w-full bg-white transition-all duration-1000 h-full flex flex-col md:flex-row ${
             mode3D ? "opacity-0" : "opacity-100"
           }`}
         >
-          {cars[car]["name"]}
+          <div className="flex-1 h-full content-center p-5">
+            <p className="font-bold text-3xl">{cars[car]["name"]}</p>
+            <ul className="list-disc list-inside text-lg">
+              {cars[car]["stats"].map((stat, index) => {
+                return <li key={index}>{stat}</li>;
+              })}
+            </ul>
+          </div>
+          <div className="flex-1 bg-red-500 h-full"></div>
         </div>
         <Canvas
           dpr={[1, 2]}
@@ -111,57 +129,62 @@ export default function Home() {
               info ? "" : "hidden"
             }`}
           >
-            {cars[car]["name"]}
+            <p className="font-bold">{cars[car]["name"]}</p>
+            <ul className="list-disc list-inside">
+              {cars[car]["stats"].map((stat, index) => {
+                return <li key={index}>{stat}</li>;
+              })}
+            </ul>
           </div>
         </div>
-        <div className="absolute bottom-0 start-0 w-full bg-gray-800 p-2">
-          <Group>
-            <Switch
-              size="xl"
-              checked={mode3D}
-              onChange={() => set3D(!mode3D)}
-              color="#fa06a6"
-              onLabel={"3D"}
-              offLabel={"2D"}
-              radius={"md"}
-            />
-            <Switch
-              size="xl"
-              checked={rotate}
-              onChange={() => setRotate(!rotate)}
-              color="#fa06a6"
-              onLabel={"Rotate On"}
-              offLabel={"Rotate Off"}
-              className={`transition-all duration-1000  ${
-                mode3D ? "opacity-100" : "opacity-0"
+      </div>
+      <div className="w-full bg-gray-800 p-2">
+        <Group>
+          <Switch
+            size="xl"
+            checked={mode3D}
+            onChange={() => set3D(!mode3D)}
+            color="#fa06a6"
+            onLabel={"3D"}
+            offLabel={"2D"}
+            radius={"md"}
+          />
+          <Switch
+            size="xl"
+            checked={rotate}
+            onChange={() => setRotate(!rotate)}
+            color="#fa06a6"
+            onLabel={"Rotate On"}
+            offLabel={"Rotate Off"}
+            className={`transition-all duration-1000  ${
+              mode3D ? "opacity-100" : "opacity-0"
+            }`}
+            radius={"md"}
+          />
+          <div className="flex flex-row ml-auto rounded-md bg-gray-100 text-sm">
+            <button
+              onClick={() => {
+                setCar(car - 1);
+              }}
+              className={`p-2 px-4 ${car == 0 ? "text-gray-100" : ""}`}
+              disabled={car == 0}
+            >
+              {"<"}
+            </button>
+            <p className={`p-2 `}>{cars[car]["name"]}</p>
+            <button
+              onClick={() => {
+                setCar(car + 1);
+              }}
+              className={`p-2 px-4 ${
+                car == cars.length - 1 ? "text-gray-100" : ""
               }`}
-              radius={"md"}
-            />
-            <div className="flex flex-row ml-auto rounded-md bg-gray-100 text-sm">
-              <button
-                onClick={() => {
-                  setCar(car - 1);
-                }}
-                className={`p-2 px-4 ${car == 0 ? "text-gray-100" : ""}`}
-                disabled={car == 0}
-              >
-                {"<"}
-              </button>
-              <p className={`p-2 `}>{cars[car]["name"]}</p>
-              <button
-                onClick={() => {
-                  setCar(car + 1);
-                }}
-                className={`p-2 px-4 ${
-                  car == cars.length - 1 ? "text-gray-100" : ""
-                }`}
-                disabled={car == cars.length - 1}
-              >
-                {">"}
-              </button>
-            </div>
-          </Group>
-        </div>
+              disabled={car == cars.length - 1}
+            >
+              {">"}
+            </button>
+          </div>
+        </Group>
       </div>
     </>
   );
