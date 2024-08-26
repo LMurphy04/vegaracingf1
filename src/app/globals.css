@@ -3,15 +3,12 @@
 @tailwind utilities;
 
 .parallax {
-    /* The image used */
-    background-image: url("../../public/bg.jpg");
-  
-    /* Create the parallax scrolling effect */
+    background-image: url("../../public/parallax-background.png");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-blend-mode: lighten;
+    background-blend-mode: overlay;
   }
 
 .indicator {
@@ -21,3 +18,7 @@
       width: 40px;
     }
   }
+
+.text-shadow {
+  text-shadow: 5px 5px #000000;
+}

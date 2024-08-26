@@ -47,6 +47,15 @@ export default function Home() {
               priority={true}
             />
           </a>
+          <a href="https://www.tiktok.com/@vegaracing_f1is" target="_blank">
+            <Image
+              src={`/socials/tiktok.svg`}
+              width={35}
+              height={35}
+              alt={`TikTok Logo`}
+              priority={true}
+            />
+          </a>
         </div>
       </div>
     </>

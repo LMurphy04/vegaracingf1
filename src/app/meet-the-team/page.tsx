@@ -49,10 +49,22 @@ export default function MeetTheTeam() {
                   <p className="text-white p-3 bg-vega-blue">
                     {member.name}&apos;s Factsheet
                   </p>
-                  <p className="p-3">{`> Favourite Grand Prix:`}</p>
-                  <p className="p-3">{`> Favourite Grand Prix:`}</p>
-                  <p className="p-3">{`> Favourite Grand Prix:`}</p>
-                  <p className="p-3">{`> Favourite Grand Prix fwnkfa fdJKFHDS UFH fSUHIK FUSHIDSF UIFDHS:`}</p>
+                  <p className="p-3">
+                    <span className="font-bold">{`> Favourite Team: `}</span>
+                    {member.team}
+                  </p>
+                  <p className="p-3">
+                    <span className="font-bold">{`> Favourite Drivers: `}</span>
+                    {member.drivers}
+                  </p>
+                  <p className="p-3">
+                    <span className="font-bold">{`> Favourite Track: `}</span>
+                    {member.track}
+                  </p>
+                  <p className="p-3">
+                    <span className="font-bold">{`> Favourite Team Principle: `}</span>
+                    {member.principle}
+                  </p>
                 </div>
               </div>
             </Tabs.Panel>
@@ -121,35 +133,59 @@ const membersInfo = [
     role: "Project Manager",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `As the Project Manager of Vega Racing, Sally uses her orginisational skills to make sure we're all on track for success. In her spare time, Sally enjoys drumming, reading, and baking. Her favourite book genre is science fiction.`,
+    drivers: "Alex Albon & Charles Leclerc",
+    team: "Williams",
+    principle: "Toto Wolf",
+    track: "The Netherlands - Zandvoort",
   },
   {
     name: "Evie",
     role: "Graphic Designer",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `Evie is Vega Racing's Graphic Designer. She designs the team kit, folio layout, and the overall branding and identity of the team. Evie enjoys playing netball in which she plays goal attack, and is currently training to run a half marathon.`,
+    drivers: "Oscar Piastri & Charles Leclerc",
+    team: "Ferrari",
+    principle: "Frederic Vasseur",
+    track: "UK - Silverstone",
   },
   {
     name: "Joe",
     role: "Design Engineer",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `Our Design Engineer, Joe, is responsible for designing the miniature car that we race at competitions. While considering the strict rules and regulations set by F1 in Schools, his aim is to make our car the fastest on the track. In his spare time, Joe enjoys playing video games, running, and watching his favourite F1 team, McLaren.`,
+    drivers: "Lando Norris & Charles Leclerc",
+    team: "McLaren",
+    principle: "James Vowles",
+    track: "Brazil - Interlagos",
   },
   {
     name: "Calum",
     role: "Manufacturing Engineer",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `Calum is our Manufacturing Engineer and Team Driver. He manages the manufacturing process and assembly of the car. He also researches manufacturing methods and materials to make sure our car is fast and compliant. He physically tests the car to ensure it is suitable for competition. Being the Team Driver means that at competitions, Calum is responsible for firing the car down the track with his quick reaction times. In his spare time, Calum likes to play video games and read. He also plays left wing at football.`,
+    drivers: "Lando Norris & Fernando Alonso",
+    team: "Aston Martin",
+    principle: "Christian Horner",
+    track: "Italy - Monza",
   },
   {
     name: "Kirsty",
     role: "Sponsorship Manager",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `As Sponsorship Manager, Kirsty contacts companies to try to gain sponsorship, whether financial or other sponsorship. Outside of F1 in Schools, Kirsty is very busy doing lots of things including running and dancing. She also finds time to play midfield at hockey.`,
+    drivers: "Lando Norris & Oscar Piastri",
+    team: "McLaren",
+    principle: "James Vowles",
+    track: "Singapore - Marina Bay",
   },
   {
     name: "Clara",
     role: "Marketing Manager",
     image: "bg-[url('/exampleMugshot.jpg')]",
     bio: `Clara is Vega Racing's Marketing Manager. Her job in the team is to organise events to promote and/or fundraise, make marketing materials, and design and build our pit display for the competition. Her hobbies include baking, running, and reading. Her favourite genre to read is dystopian or rom coms.`,
+    drivers: "Charles Leclerc & Oscar Piastri",
+    team: "Ferrari",
+    principle: "Toto Wolf",
+    track: "Canada - Montral",
   },
 ];

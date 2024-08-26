@@ -15,13 +15,15 @@
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.109.5",
     "@react-three/fiber": "^8.17.5",
+    "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "firebase": "^10.12.3",
     "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
     "three": "^0.166.1",
-    "uid": "^2.0.2"
+    "uid": "^2.0.2",
+    "vegaracingf1": "file:"
   },
   "devDependencies": {
     "@types/node": "^20",

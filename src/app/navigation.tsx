@@ -9,14 +9,9 @@ export const navigationItems = [
         id: 0,
       },
       {
-        title: "Sustainability",
-        url: "/sustainability",
-        id: 1,
-      },
-      {
         title: "Vega Inspire",
         url: "/vega-inspire",
-        id: 2,
+        id: 1,
       },
     ],
   },
