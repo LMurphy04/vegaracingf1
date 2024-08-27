@@ -19,7 +19,7 @@ export default function AdminLogin() {
         router.push("/admin/edit-blog");
       }
     });
-  }, []);
+  }, [router]);
 
   // Handles Login Attempts
   const handleLogin = (e: any) => {

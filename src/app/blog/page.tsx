@@ -8,7 +8,9 @@ export default async function Blog() {
     const querySnapshot = await getDocs(collection(db, "blog"));
     var data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data(),
+      heading: doc.get("heading"),
+      body: doc.get("body"),
+      date: doc.get("date"),
     }));
     data.sort((a, b) => b.date - a.date);
     return data;

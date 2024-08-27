@@ -31,7 +31,7 @@ export default function AdminBlogView() {
         console.log(`Logged In: ${user.email}`);
       }
     });
-  }, []);
+  }, [router]);
 
   // Access Blog Data
   useEffect(() => {
@@ -39,7 +39,9 @@ export default function AdminBlogView() {
       const querySnapshot = await getDocs(collection(db, "blog"));
       const data = querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data(),
+        heading: doc.get("heading"),
+        body: doc.get("body"),
+        date: doc.get("date"),
       }));
       data.sort((a, b) => b.date - a.date);
       setBlogPosts(data);

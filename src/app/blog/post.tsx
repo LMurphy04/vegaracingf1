@@ -11,7 +11,7 @@ export default function BlogPost({
   seconds: number;
 }) {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   //toggle visibility once loaded on screen
   useEffect(() => {
@@ -22,7 +22,9 @@ export default function BlogPost({
       }
     });
 
-    scrollObserver.observe(ref.current);
+    if (ref.current) {
+      scrollObserver.observe(ref.current);
+    }
   }, []);
 
   //converts seconds to dd/mm/yyyy string format
