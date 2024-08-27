@@ -82,11 +82,9 @@ export default function Home() {
   return (
     <>
       <Title title="Car Museum" />
-      <div className="relative shadow-xl grow">
+      <div className="relative shadow-xl grow overflow-hidden">
         <div
-          className={`absolute top-0 w-full bg-white transition-all duration-1000 h-full flex flex-col md:flex-row overflow-y-auto ${
-            mode3D ? "opacity-0 translate-x-[-100%]" : "opacity-100"
-          }`}
+          className={`absolute top-0 w-full bg-white transition-all duration-1000 h-full flex flex-col md:flex-row overflow-y-auto`}
         >
           <div className="flex-1 md:h-full content-center p-5 md:overflow-y-auto">
             <p className="font-bold text-3xl">{currentCar["name"]}</p>
@@ -115,7 +113,7 @@ export default function Home() {
                     alt={`Vega Working with School Pupils`}
                     priority={true}
                     style={{ width: "100%", height: "auto" }}
-                    className="rounded-md"
+                    className="rounded-md hover:scale-[1.02]"
                   />
                 );
               })}
@@ -124,18 +122,18 @@ export default function Home() {
         </div>
         <div
           className={`transition-all duration-1000 h-full  ${
-            mode3D ? "opacity-100" : "opacity-0 translate-x-[-100%]"
+            mode3D ? "" : "translate-x-[-100%]"
           }`}
         >
           <Canvas
             dpr={[1, 2]}
             className={`w-full h-full bg-black touch-none`}
-            camera={{ fov: 45, position: [-10, 10, 30] }}
+            camera={{ fov: 45, position: [-20, 10, 40] }}
             onClick={() => setRotate(false)}
           >
             <OrbitControls
               maxPolarAngle={Math.PI / 2.01}
-              maxDistance={40}
+              maxDistance={60}
               minDistance={12}
               autoRotate={rotate}
               makeDefault

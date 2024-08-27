@@ -37,7 +37,7 @@ export default function MeetTheTeam() {
         {membersInfo.map((member, index) => {
           return (
             <Tabs.Panel key={index} value={member.name}>
-              <div className="w-full flex flex-col md:flex-row gap-5">
+              <div className="w-full h-full flex flex-col md:flex-row gap-5">
                 <div>
                   <div className="pb-3 pr-3 border-b-[1px] border-black">
                     <p className="text-xl font-bold">{member.name}</p>

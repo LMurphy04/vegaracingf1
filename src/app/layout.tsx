@@ -33,11 +33,11 @@ export default function RootLayout({
         <MantineProvider>
           <Navbar />
           <div className="flex flex-row w-full grow">
-            <div className="parallax bg-gray-300 shadow-[inset_-10px_0px_10px_-10px_rgb(0,0,0,1.00),inset_0px_10px_10px_-10px_rgb(0,0,0,1.00),inset_0px_-10px_10px_-10px_rgb(0,0,0,1.00)] grow" />
+            <div className="parallax bg-gray-300 shadow-[inset_-10px_0px_10px_-10px_rgb(0,0,0,1.00),inset_0px_10px_10px_-10px_rgb(0,0,0,1.00),inset_0px_-10px_10px_-10px_rgb(0,0,0,1.00)] grow z-10" />
             <div className="px-5 sm:px-10 py-5 w-full max-w-[1279px] shadow-[inset_0px_10px_10px_-10px_rgb(0,0,0,0.70),inset_0px_-10px_10px_-10px_rgb(0,0,0,0.70)] flex flex-col">
               {children}
             </div>
-            <div className="parallax bg-gray-300 shadow-[inset_10px_0px_10px_-10px_rgb(0,0,0,1.00),inset_0px_10px_10px_-10px_rgb(0,0,0,1.00),inset_0px_-10px_10px_-10px_rgb(0,0,0,1.00)] grow" />
+            <div className="parallax bg-gray-300 shadow-[inset_10px_0px_10px_-10px_rgb(0,0,0,1.00),inset_0px_10px_10px_-10px_rgb(0,0,0,1.00),inset_0px_-10px_10px_-10px_rgb(0,0,0,1.00)] grow z-10" />
           </div>
           <Footer />
         </MantineProvider>

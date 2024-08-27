@@ -31,7 +31,7 @@ export default function Home() {
                 alt={`Vega Working with School Pupils`}
                 priority={true}
                 style={{ width: "100%", height: "auto" }}
-                className="rounded-lg shadow-xl mb-10"
+                className="rounded-lg shadow-xl mb-10 hover:scale-[1.01]"
               />
               <p className="whitespace-pre text-wrap">{event["desc"]}</p>
             </Timeline.Item>

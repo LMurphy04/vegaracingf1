@@ -27,6 +27,7 @@ export default function Home() {
             alt={`Vega Working with School Pupils`}
             priority={true}
             style={{ width: "100%", height: "auto" }}
+            className="rounded-lg hover:scale-[1.02]"
           />
         </div>
       </div>

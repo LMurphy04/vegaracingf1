@@ -1,6 +1,7 @@
 "use client";
 import Title from "../app/title";
 import Image from "next/image";
+import { sponsors } from "./sponsors";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel } from "@mantine/carousel";
@@ -8,6 +9,12 @@ import "@mantine/carousel/styles.css";
 
 export default function Home() {
   const autoplay = useRef(Autoplay({ delay: 3500 }));
+  const sponsorGroups = [
+    sponsors["P1Sponsors"],
+    sponsors["P2Sponsors"],
+    sponsors["P3Sponsors"],
+    sponsors["P4Sponsors"],
+  ];
   return (
     <>
       <Title title={"Welcome to Vega Racing!"} />
@@ -18,7 +25,7 @@ export default function Home() {
           Scotland at the <span className="font-bold">2024 World Finals</span>{" "}
           in Saudi Arabia, and we’d love to take you along for the ride.
         </p>
-        <div className="hover:scale-[1.02] transition-all shadow-2xl flex flex-col h-40 bg-gradient-to-r from-vega-blue to-vega-pink rounded-xl font-bold text-white p-5">
+        <div className="hover:scale-[1.02] transition-all shadow-2xl flex flex-col h-40 bg-gradient-to-r from-vega-blue to-vega-pink rounded-lg font-bold text-white p-5">
           <p className="text-center my-auto w-full text-4xl text-shadow">
             ‘Working together to reach the stars’
           </p>
@@ -72,13 +79,13 @@ export default function Home() {
               We’re a professional class F1 in Schools team formed of six
               students from Linlithgow Academy, competing in the 2024 World
               Finals. Previously, we’ve won the Scottish Regional Finals before
-              coming 2 nd in the UK National Finals, allowing us to qualify for
-              Worlds! We’re hugely community oriented, supporting the F1 in
-              Primary Schools competition in our local area and partnering with
-              local businesses to succeed together. We never would have been
-              able to progress to the massive stage of Worlds without our
-              community’s backing, so we hope to continue our crucial link with
-              them into the future.
+              coming 2<sup>nd</sup> in the UK National Finals, allowing us to
+              qualify for Worlds! We’re hugely community oriented, supporting
+              the F1 in Primary Schools competition in our local area and
+              partnering with local businesses to succeed together. We never
+              would have been able to progress to the massive stage of Worlds
+              without our community’s backing, so we hope to continue our
+              crucial link with them into the future.
             </p>
           </div>
         </div>
@@ -94,25 +101,31 @@ export default function Home() {
         <div className="mt-8 mb-16">
           <div className="flex font-bold mb-3">
             <span className="border-[1px] border-vega-blue mr-3 grow my-auto" />
-            <p>Sponsors</p>
+            <p>Thank You to Our Amazing Sponsors!</p>
             <span className="border-[1px] border-vega-blue ml-3 my-auto grow" />
           </div>
-          <a href="/partners" className="py-5">
-            <Carousel
-              plugins={[autoplay.current]}
-              draggable={false}
-              withControls={false}
-              loop
-              classNames={{
-                slide:
-                  "bg-white border-[1px] border-black rounded-xl mx-5 max-w-[170px] h-[170px] shadow-lg flex p-5",
-                root: "mx-[-20px] sm:mx-[-40px]",
-              }}
-            >
-              {sponsors.map((sponsor, index) => {
+          <Carousel
+            plugins={[autoplay.current]}
+            onMouseEnter={autoplay.current.stop}
+            onMouseLeave={autoplay.current.reset}
+            draggable={false}
+            withControls={false}
+            loop
+            classNames={{
+              slide:
+                "hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer bg-white border-[1px] border-black rounded-xl mx-5 max-w-[170px] h-[170px] shadow-lg flex p-5",
+              root: "mx-[-20px] sm:mx-[-40px] py-5",
+            }}
+          >
+            {sponsorGroups.map((sponsorGroup) => {
+              return sponsorGroup.map((sponsor, index) => {
                 return (
                   <Carousel.Slide key={index}>
-                    <div className="m-auto max-w-[150px] max-h-[150px]">
+                    <a
+                      className="m-auto max-w-[150px] max-h-[150px]"
+                      href={sponsor.website}
+                      target="_blank"
+                    >
                       <Image
                         src={`/partners/${sponsor.image}`}
                         width={150}
@@ -121,77 +134,14 @@ export default function Home() {
                         priority={true}
                         style={{ width: "100%", height: "auto" }}
                       />
-                    </div>
+                    </a>
                   </Carousel.Slide>
                 );
-              })}
-            </Carousel>
-          </a>
+              });
+            })}
+          </Carousel>
         </div>
       </div>
     </>
   );
 }
-
-const sponsors = [
-  {
-    name: "Stellar Omada",
-    image: "stellar_logo.png",
-  },
-  {
-    name: "CBS Consulting",
-    image: "cbs_logo.jpg",
-  },
-  {
-    name: "Alan Steel",
-    image: "alan_steel_logo.webp",
-  },
-  {
-    name: "CGI",
-    image: "cgi.png",
-  },
-  {
-    name: "Rabbie's",
-    image: "rabbies_blue.jpeg",
-  },
-  {
-    name: "LCDT",
-    image: "lcdt.png",
-  },
-  {
-    name: "Linlith-Go-Solar",
-    image: "lgs.png",
-  },
-  {
-    name: "GreenFox Energy",
-    image: "green_fox.png",
-  },
-  {
-    name: "Calnex",
-    image: "calnex.png",
-  },
-  {
-    name: "XARA",
-    image: "xara.webp",
-  },
-  {
-    name: "NMIS",
-    image: "nmis.png",
-  },
-  {
-    name: "Scot's Bearings",
-    image: "scots.jpg",
-  },
-  {
-    name: "Lugo",
-    image: "lugo.jpg",
-  },
-  {
-    name: "Deans Engineering",
-    image: "deans.jpg",
-  },
-  {
-    name: "One Linlithgow",
-    image: "one_linlithgow.jpg",
-  },
-];
