@@ -70,7 +70,7 @@ export default function CarMuseum() {
       races: "8 (2 Cars)",
       parts: "7",
       funFact:
-        "This car was second in development class by only 0.002 seconds. That’s around 60 times slower than the blink of an eye!",
+        "This car was second in development class by only 0.002 seconds. That’s around 60 times faster than the blink of an eye!",
     },
     {
       name: "Development Class Regionals",

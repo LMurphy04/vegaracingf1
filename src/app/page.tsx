@@ -14,13 +14,13 @@ export default function Home() {
           Scotland at the <span className="font-bold">2024 World Finals</span>{" "}
           in Saudi Arabia, and we’d love to take you along for the ride.
         </p>
+        <WhatIsF1iS />
+        <AboutUs />
         <div className="hover:scale-[1.02] transition-all shadow-2xl flex flex-col h-40 bg-gradient-to-r from-vega-blue to-vega-pink rounded-lg font-bold text-white p-5">
           <p className="text-center my-auto w-full text-4xl text-shadow">
             ‘Working together to reach the stars’
           </p>
         </div>
-        <WhatIsF1iS />
-        <AboutUs />
         <Image
           src={`/team-photos/frontPage3.jpg`}
           width={1500}
@@ -85,7 +85,7 @@ function AboutUs() {
         />
       </div>
       <div className="basis-2/3 my-auto">
-        <p className="ml-5">
+        <p className="md:ml-5">
           <span className="font-bold">About Us</span>
           <br />
           We’re a professional class F1 in Schools team formed of six students

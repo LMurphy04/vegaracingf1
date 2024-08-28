@@ -6,7 +6,7 @@ import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
 
 export default function SponsorCarousel() {
-  const autoplay = useRef(Autoplay({ delay: 3500 }));
+  const autoplay = useRef(Autoplay({ delay: 2250, stopOnInteraction: false }));
   const sponsorGroups = [
     sponsors["P1Sponsors"],
     sponsors["P2Sponsors"],
@@ -25,7 +25,6 @@ export default function SponsorCarousel() {
         plugins={[autoplay.current]}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
-        draggable={false}
         withControls={false}
         loop
         classNames={{

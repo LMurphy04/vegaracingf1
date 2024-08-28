@@ -81,7 +81,7 @@ function MemberContent({
             {member["track"]}
           </p>
           <p className="p-3">
-            <span className="font-bold">{`> Favourite Team Principle: `}</span>
+            <span className="font-bold">{`> Favourite Team Principal: `}</span>
             {member["principle"]}
           </p>
         </div>
@@ -207,6 +207,6 @@ const membersInfo = [
     drivers: "Charles Leclerc & Oscar Piastri",
     team: "Ferrari",
     principle: "Toto Wolf",
-    track: "Canada - Montral",
+    track: "Canada - Montreal",
   },
 ];

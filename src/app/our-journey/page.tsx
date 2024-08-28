@@ -52,7 +52,7 @@ const events = [
   {
     title: "Dev Class UK Nationals",
     date: "12/01/2023",
-    desc: "After winning in our Regional Finals, we travelled to Birmingham to compete in the UK National Finals two months later. This event was held amid Autosport International, giving us the opportunity to explore motorsports show and learn loads about all areas of the sport. Here, we placed 2nd in the development class; a massive achievement representing all our hard work up to this point, and which gave us a springboard into competing in the professional class.",
+    desc: "After winning in our Regional Finals, we travelled to Birmingham to compete in the UK National Finals two months later. This event was held alongside Autosport International, giving us the opportunity to explore motorsports show and learn loads about all areas of the sport. Here, we placed 2nd in the development class; a massive achievement representing all our hard work up to this point, and which gave us a springboard into competing in the professional class.",
     image: "/event-photos/devNationals.jpg",
   },
   {

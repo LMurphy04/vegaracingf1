@@ -101,14 +101,14 @@ function P2Card({
   sponsor: { name: string; image: string; website: string };
 }) {
   return (
-    <div className="w-max mx-auto h-[200px]">
+    <div className="w-max mx-auto">
       <a
         href={sponsor.website}
         target="_blank"
-        className="w-[450px] h-[200px] bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-row p-4 gap-3 h-full"
+        className="w-[240px] md:w-[400px] md:h-[200px] bg-white border-[1px] hover:border-4 hover:border-vega-blue hover:shadow-vega-blue border-black rounded-xl shadow-2xl flex flex-col md:flex-row p-4 gap-3 h-full"
       >
         <div className="flex basis-1/2">
-          <div className="m-auto max-w-[150px] max-h-[150px]">
+          <div className="m-auto flex w-[150px] h-[150px]">
             <Image
               src={`/partners/${sponsor.image}`}
               width={150}
@@ -116,10 +116,11 @@ function P2Card({
               alt={`${sponsor.name} Logo`}
               priority={true}
               style={{ width: "100%", height: "auto" }}
+              className="my-auto"
             />
           </div>
         </div>
-        <div className="flex-1 flex flex-col items-center border-l-[1px] border-black my-auto mx-auto p-4">
+        <div className="flex-1 flex flex-col items-center md:border-l-[1px] border-black my-auto mx-auto p-4">
           <p className="text-2xl font-bold border-b-[1px] border-black pb-2 mb-2 text-center">
             {sponsor.name}
           </p>
