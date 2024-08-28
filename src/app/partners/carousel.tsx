@@ -1,6 +1,7 @@
 "use client";
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
+import { sponsors } from "../sponsors";
 
 export default function P1Carousel({
   P1Sponsors,
@@ -15,7 +16,7 @@ export default function P1Carousel({
       controlsOffset="xl"
       speed={3}
       slideSize={{ base: "60%" }}
-      initialSlide={Math.floor(Math.random() * 3)}
+      initialSlide={Math.floor(Math.random() * sponsors["P1Sponsors"].length)}
       classNames={{
         slide:
           "my-10 bg-white border-[1px] border-black rounded-xl mx-10 h-[350px] md:h-[300px] shadow-lg flex flex-col md:flex-row p-5 hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer",

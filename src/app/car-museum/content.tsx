@@ -93,7 +93,7 @@ export default function CarMuseum() {
   return (
     <>
       <Title title="Car Museum" />
-      <div className="relative shadow-xl grow overflow-hidden">
+      <div className="mx-[-20px] sm:mx-0 relative shadow-xl min-h-[400px] grow overflow-hidden">
         <SimpleDisplay currentCar={currentCar} />
         <CarEnvironment
           car={car}
@@ -103,15 +103,17 @@ export default function CarMuseum() {
           mode3D={mode3D}
         />
       </div>
-      <Controls
-        cars={cars}
-        mode3D={mode3D}
-        set3D={set3D}
-        rotate={rotate}
-        setRotate={setRotate}
-        car={car}
-        setCar={setCar}
-      />
+      <div className="mx-[-20px] sm:mx-0">
+        <Controls
+          cars={cars}
+          mode3D={mode3D}
+          set3D={set3D}
+          rotate={rotate}
+          setRotate={setRotate}
+          car={car}
+          setCar={setCar}
+        />
+      </div>
     </>
   );
 }
@@ -122,19 +124,19 @@ function SimpleDisplay({ currentCar }: { currentCar: CarDetails }) {
       className={`absolute top-0 w-full bg-white transition-all duration-1000 h-full flex flex-col md:flex-row overflow-y-auto`}
     >
       <div className="flex-1 md:h-full content-center p-5 md:overflow-y-auto">
-        <p className="font-bold text-3xl">{currentCar["name"]}</p>
-        <p className="font-bold text-xl mt-5">Awards</p>
-        <ul className="list-disc list-inside text-lg">
+        <p className="font-bold text-xl sm:text-3xl">{currentCar["name"]}</p>
+        <p className="font-bold text-lg sm:text-xl mt-5">Awards</p>
+        <ul className="list-disc list-inside sm:text-lg">
           {currentCar["awards"].map((award, index) => {
             return <li key={index}>{award}</li>;
           })}
         </ul>
-        <p className="font-bold text-xl mt-5">Stats</p>
-        <p className="text-lg">{`Best Track Time: ${currentCar["time"]}`}</p>
-        <p className="text-lg">{`Number of Races: ${currentCar["races"]}`}</p>
-        <p className="text-lg">{`Number of Parts: ${currentCar["parts"]}`}</p>
-        <p className="font-bold text-xl mt-5">Fun Fact</p>
-        <p className="text-lg">{currentCar["funFact"]}</p>
+        <p className="font-bold text-lg sm:text-xl mt-5">Stats</p>
+        <p className="sm:text-lg">{`Best Track Time: ${currentCar["time"]}`}</p>
+        <p className="sm:text-lg">{`Number of Races: ${currentCar["races"]}`}</p>
+        <p className="sm:text-lg">{`Number of Parts: ${currentCar["parts"]}`}</p>
+        <p className="font-bold text-lg sm:text-xl mt-5">Fun Fact</p>
+        <p className="sm:text-lg">{currentCar["funFact"]}</p>
       </div>
       <div className="flex flex-1 md:h-full md:overflow-y-auto flex-col items-center p-5">
         <div className="my-auto flex flex-col gap-5">
@@ -319,7 +321,7 @@ function InfoSlider({ currentCar }: { currentCar: CarDetails }) {
         </button>
       </div>
       <div
-        className={`p-2 bg-gray-100 h-full w-[15rem] whitespace-pre text-wrap overflow-y-auto ${
+        className={`p-2 bg-gray-100 h-full sm:w-[15rem] whitespace-pre text-wrap overflow-y-auto ${
           info ? "" : "hidden"
         }`}
       >

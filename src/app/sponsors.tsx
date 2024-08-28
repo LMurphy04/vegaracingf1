@@ -7,20 +7,26 @@ export const sponsors = {
       bio: "We have had a long and successful partnership with Stellar Omada, from gaining knowledge on marketing strategies to attending various networking events hosted by Stellar, including one at Tynecastle Stadium. They are one of our closest partners and are extremely enthusiastic in supporting our team.",
     },
     {
-      name: "CBS Consulting",
-      image: "cbs_logo.jpg",
-      website: "https://www.cbsconsulting.co.uk/",
-      bio: "CBS Consulting have sponsored us from our very first competition, with the blue in our logo originating from our partnership with CBS. We are very grateful to them for believing in our mission from the start.",
-    },
-    {
       name: "Alan Steel",
       image: "alan_steel_logo.webp",
       website: "https://www.alansteel.com/",
       bio: "We partnered with local company Alan Steel Asset Management as they are passionate about supporting STEM projects in our local area, resulting in them supporting us financially throughout our time competing.",
     },
+    {
+      name: "Deans Engineering",
+      image: "deans.jpg",
+      website: "http://www.deansengineering.com/",
+      bio: "Deans Engineering is our principal engineering sponsor, supplying expertise, materials, manufacturing and tooling throughout the engineering process - from the first concepts to final manufacture and finishing.",
+    },
   ],
 
   P2Sponsors: [
+    {
+      name: "CBS Consulting",
+      image: "cbs_logo.jpg",
+      website: "https://www.cbsconsulting.co.uk/",
+      bio: "CBS Consulting have sponsored us from our very first competition, with the blue in our logo originating from our partnership with CBS. We are very grateful to them for believing in our mission from the start.",
+    },
     {
       name: "CGI",
       image: "cgi.png",
@@ -81,11 +87,6 @@ export const sponsors = {
       name: "Lugo",
       image: "lugo.jpg",
       website: "https://lugoit.co.uk/",
-    },
-    {
-      name: "Deans Engineering",
-      image: "deans.jpg",
-      website: "http://www.deansengineering.com/",
     },
     {
       name: "One Linlithgow",
