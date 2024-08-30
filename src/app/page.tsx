@@ -11,7 +11,10 @@ export default function Home() {
         <p>
           Hi, we’re <span className="font-bold">Vega Racing</span>, a
           professional class F1 in Schools team! This year we’re representing
-          Scotland at the <span className="font-bold">2024 World Finals</span>{" "}
+          Scotland at the{" "}
+          <a href="https://www.f1inschools.com/" target="_blank">
+            <span className="font-bold underline">2024 World Finals</span>
+          </a>{" "}
           in Saudi Arabia, and we’d love to take you along for the ride.
         </p>
         <WhatIsF1iS />
@@ -88,7 +91,7 @@ function AboutUs() {
         <p className="md:ml-5">
           <span className="font-bold">About Us</span>
           <br />
-          We’re a professional class F1 in Schools team formed of six students
+          We’re a Professional Class F1 in Schools team formed of six students
           from Linlithgow Academy, competing in the 2024 World Finals.
           Previously, we’ve won the Scottish Regional Finals before coming 2
           <sup>nd</sup> in the UK National Finals, allowing us to qualify for

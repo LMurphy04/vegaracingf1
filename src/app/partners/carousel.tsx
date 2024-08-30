@@ -19,7 +19,7 @@ export default function P1Carousel({
       initialSlide={Math.floor(Math.random() * sponsors["P1Sponsors"].length)}
       classNames={{
         slide:
-          "my-10 bg-white border-[1px] border-black rounded-xl mx-10 h-[350px] md:h-[300px] shadow-lg flex flex-col md:flex-row p-5 hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer",
+          "my-10 bg-white border-[1px] min-w-[300px] md:w-auto border-black rounded-xl mx-10 h-[350px] md:h-[300px] shadow-lg flex flex-col md:flex-row p-5 hover:border-4 hover:border-vega-blue hover:shadow-vega-blue hover:cursor-pointer",
         indicator: "bg-vega-blue indicator",
         root: "mx-[-20px] sm:mx-[-40px]",
       }}

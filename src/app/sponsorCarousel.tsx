@@ -36,12 +36,13 @@ export default function SponsorCarousel() {
         {sponsorGroups.map((sponsorGroup) => {
           return sponsorGroup.map((sponsor, index) => {
             return (
-              <Carousel.Slide key={index}>
-                <a
-                  className="m-auto max-w-[150px] max-h-[150px]"
-                  href={sponsor.website}
-                  target="_blank"
-                >
+              <Carousel.Slide
+                onClick={() => {
+                  window.open(`${sponsor.website}`, "_blank");
+                }}
+                key={index}
+              >
+                <div className="m-auto max-w-[150px] max-h-[150px]">
                   <Image
                     src={`/partners/${sponsor.image}`}
                     width={150}
@@ -50,7 +51,7 @@ export default function SponsorCarousel() {
                     priority={true}
                     style={{ width: "100%", height: "auto" }}
                   />
-                </a>
+                </div>
               </Carousel.Slide>
             );
           });

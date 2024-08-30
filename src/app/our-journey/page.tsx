@@ -46,19 +46,19 @@ const events = [
   {
     title: "Dev Class Scottish Regionals",
     date: "06/10/2022",
-    desc: "We began our journey as a team in October 2022, when competing in Development Class at the Scottish Regional Finals at our home base, Linlithgow Academy. Here, we were able to win first place in the category, as well as win the awards for the best engineered car and fastest car in development class. This amazing performance proved our ability as a team and gave us a confidence boost stepping onto the larger UK Nationals stage.",
+    desc: "We began our journey as a team in October 2022, when competing in Development Class at the Scottish Regional Finals at our home base, Linlithgow Academy. Here, we were able to win first place in the category, as well as win the awards for the best engineered car and fastest car in Development Class. This amazing performance proved our ability as a team and gave us a confidence boost stepping onto the larger UK Nationals stage.",
     image: "/event-photos/devRegionals.jpg",
   },
   {
     title: "Dev Class UK Nationals",
     date: "12/01/2023",
-    desc: "After winning in our Regional Finals, we travelled to Birmingham to compete in the UK National Finals two months later. This event was held alongside Autosport International, giving us the opportunity to explore motorsports show and learn loads about all areas of the sport. Here, we placed 2nd in the development class; a massive achievement representing all our hard work up to this point, and which gave us a springboard into competing in the professional class.",
+    desc: "After winning in our Regional Finals, we travelled to Birmingham to compete in the UK National Finals two months later. This event was held alongside Autosport International, giving us the opportunity to explore the motorsports show and learn loads about all areas of the sport. Here, we placed 2nd in the Development Class; a massive achievement representing all our hard work up to this point, and which gave us a springboard into competing in the Professional Class.",
     image: "/event-photos/devNationals.jpg",
   },
   {
     title: "Pro Class Scottish Regionals",
     date: "24/02/2023",
-    desc: "Reflecting where we started four months prior, we again competed in the Scottish Regional Finals in the Linlithgow Academy, although now in the professional class. Beginning again in the more complex class, we were thrilled to win 1st place and become Scottish Champions, as well as claiming the Fastest Car award and Best Engineered Car Award, showing how far we’d come as a team. With our new title, we moved forward again to the UK National Finals, to see if we could win and reach the world stage.",
+    desc: "Reflecting where we started four months prior, we again competed in the Scottish Regional Finals at Linlithgow Academy, although now in the Professional Class. Beginning again in the more complex class, we were thrilled to win 1st place and become Scottish Champions, as well as claiming the Fastest Car award and Best Engineered Car Award, showing how far we’d come as a team. With our new title, we moved forward again to the UK National Finals, to see if we could win and reach the world stage.",
     image: "/event-photos/proRegionals.jpg",
   },
   {

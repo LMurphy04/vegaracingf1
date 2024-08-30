@@ -44,7 +44,7 @@ export default async function Blog() {
     <>
       <Title title={"Blog"} />
       <div className="flex">
-        <p className="mx-auto font-semibold italic">
+        <p className="mx-auto font-semibold italic text-center">
           Stay up to date with Vega Racing through our blog!
         </p>
       </div>

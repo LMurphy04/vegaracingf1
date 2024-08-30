@@ -13,6 +13,7 @@ type CarDetails = {
   photos: string[];
   awards: string[];
   races: string;
+  date: string;
   time: string;
   parts: string;
   funFact: string;
@@ -35,6 +36,7 @@ export default function CarMuseum() {
         "Scottish Champions & 2nd in the UK (overall)",
         "3rd Fastest Track Time",
       ],
+      date: "29/06/2023",
       time: "1.092s",
       races: "8 (2 Cars)",
       parts: "14",
@@ -49,6 +51,7 @@ export default function CarMuseum() {
         "/car-photos/ProRegionals2.png",
       ],
       awards: ["Fastest & Best Engineered Car"],
+      date: "24/02/2023",
       time: "1.169s",
       races: "4",
       parts: "15",
@@ -66,6 +69,7 @@ export default function CarMuseum() {
         "2nd Fastest Car",
         "Nominated for best engineered car & scrutineering award",
       ],
+      date: "12/01/2023",
       time: "1.355s",
       races: "8 (2 Cars)",
       parts: "7",
@@ -80,6 +84,7 @@ export default function CarMuseum() {
         "/car-photos/DevRegionalsandNationals2.png",
       ],
       awards: ["Fastest & Best Engineered Car"],
+      date: "06/10/2022",
       time: "1.355s",
       races: "4",
       parts: "7",
@@ -125,6 +130,10 @@ function SimpleDisplay({ currentCar }: { currentCar: CarDetails }) {
     >
       <div className="flex-1 md:h-full content-center p-5 md:overflow-y-auto">
         <p className="font-bold text-xl sm:text-3xl">{currentCar["name"]}</p>
+        <p className="sm:text-lg mt-5">
+          <span className="text-lg sm:text-xl font-bold">Date: </span>
+          {currentCar["date"]}
+        </p>
         <p className="font-bold text-lg sm:text-xl mt-5">Awards</p>
         <ul className="list-disc list-inside sm:text-lg">
           {currentCar["awards"].map((award, index) => {
@@ -245,13 +254,13 @@ function CarEnvironment({
   var currentCar = cars[car];
   return (
     <div
-      className={`transition-all duration-1000 h-full  ${
+      className={`transition-all duration-1000 h-full ${
         mode3D ? "" : "translate-x-[-100%]"
       }`}
     >
       <Canvas
         dpr={[1, 2]}
-        className={`w-full h-full bg-black touch-none`}
+        className={`w-full h-full bg-black touch-none hover:cursor-grab`}
         camera={{ fov: 45, position: [-20, 10, 40] }}
         onClick={() => setRotate(false)}
       >
@@ -310,9 +319,9 @@ function InfoSlider({ currentCar }: { currentCar: CarDetails }) {
     <div
       className={`absolute top-0 start-0h-full bg-gray-800 flex flex-col h-full`}
     >
-      <div className="m-2 text-white">
+      <div className="text-white">
         <button
-          className="float-right"
+          className="p-2 float-right bg-vega-pink"
           onClick={() => {
             setInfo(!info);
           }}
@@ -326,6 +335,10 @@ function InfoSlider({ currentCar }: { currentCar: CarDetails }) {
         }`}
       >
         <p className="font-bold underline">{currentCar["name"]}</p>
+        <p className="mt-5">
+          <span className="font-bold">Date: </span>
+          {currentCar["date"]}
+        </p>
         <p className="font-bold mt-5">Awards</p>
         <ul className="list-disc list-inside">
           {currentCar["awards"].map((award, index) => {
