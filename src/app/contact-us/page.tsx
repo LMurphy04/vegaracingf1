@@ -17,7 +17,7 @@ export default function Home() {
         </p>
         <div className="flex justify-center">
           <Image
-            src={`/team-photos/frontPage3.jpg`}
+            src={`/team-photos/team-huddle.jpg`}
             width={400}
             height={400}
             alt={`Team Hugging Photo`}

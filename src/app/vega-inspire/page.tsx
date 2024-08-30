@@ -1,7 +1,7 @@
 import Title from "../title";
 import Image from "next/image";
 
-export default function Home() {
+export default function VehaInspire() {
   return (
     <>
       <Title title="Vega Inspire" />

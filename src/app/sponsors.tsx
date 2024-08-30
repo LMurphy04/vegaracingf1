@@ -2,13 +2,13 @@ export const sponsors = {
   P1Sponsors: [
     {
       name: "Stellar Omada",
-      image: "stellar_logo.png",
+      image: "stellar.png",
       website: "https://stellaruk.co.uk/",
       bio: "We have had a long and successful partnership with Stellar Omada, from gaining knowledge on marketing strategies to attending various networking events hosted by Stellar, including one at Tynecastle Stadium. They are one of our closest partners and are extremely enthusiastic in supporting our team.",
     },
     {
       name: "Alan Steel",
-      image: "alan_steel_logo.webp",
+      image: "alan-steel.webp",
       website: "https://www.alansteel.com/",
       bio: "We partnered with local company Alan Steel Asset Management as they are passionate about supporting STEM projects in our local area, resulting in them supporting us financially throughout our time competing.",
     },
@@ -23,7 +23,7 @@ export const sponsors = {
   P2Sponsors: [
     {
       name: "CBS Consulting",
-      image: "cbs_logo.jpg",
+      image: "cbs.jpg",
       website: "https://www.cbsconsulting.co.uk/",
       bio: "CBS Consulting have sponsored us from our very first competition, with the blue in our logo originating from our partnership with CBS. We are very grateful to them for believing in our mission from the start.",
     },
@@ -35,7 +35,7 @@ export const sponsors = {
     },
     {
       name: "Rabbie's",
-      image: "rabbies_blue.jpeg",
+      image: "rabbies.jpeg",
       website: "https://www.rabbies.com/en",
       bio: "Rabbie’s are our travel sponsors and have kindly supported our travel to several national competitions by providing us with a luxury mini coach and driver.",
     },
@@ -56,7 +56,7 @@ export const sponsors = {
     },
     {
       name: "GreenFox Energy",
-      image: "green_fox.png",
+      image: "greenfox.png",
       website: "https://www.greenfoxenergy.co.uk/",
       bio: "Green Fox Energy specialises in renewable energy sources, allowing us to continue our mission to improve sustainability in all aspects of our work.",
     },
@@ -90,7 +90,7 @@ export const sponsors = {
     },
     {
       name: "One Linlithgow",
-      image: "one_linlithgow.jpg",
+      image: "one-linlithgow.jpg",
       website: "https://www.onelinlithgow.com/",
     },
   ],

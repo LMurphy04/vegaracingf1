@@ -1,5 +1,4 @@
 "use client";
-import Title from "../title";
 import Image from "next/image";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
@@ -27,10 +26,10 @@ export default function CarMuseum() {
   const cars = [
     {
       name: "Professional Class Nationals",
-      model: useLoader(FBXLoader, `/models/vega_pro_nationals.fbx`),
+      model: useLoader(FBXLoader, `/models/vega-pro-nationals.fbx`),
       photos: [
-        `/car-photos/ProNationals1.png`,
-        `/car-photos/ProNationals2.png`,
+        `/car-photos/pro-nationals-1.png`,
+        `/car-photos/pro-nationals-2.png`,
       ],
       awards: [
         "Scottish Champions & 2nd in the UK (overall)",
@@ -45,10 +44,10 @@ export default function CarMuseum() {
     },
     {
       name: "Professional Class Regionals",
-      model: useLoader(FBXLoader, "/models/vega_pro_regionals.fbx"),
+      model: useLoader(FBXLoader, "/models/vega-pro-regionals.fbx"),
       photos: [
-        `/car-photos/ProRegionals1.png`,
-        "/car-photos/ProRegionals2.png",
+        `/car-photos/pro-regionals-1.png`,
+        "/car-photos/pro-regionals-2.png",
       ],
       awards: ["Fastest & Best Engineered Car"],
       date: "24/02/2023",
@@ -60,10 +59,10 @@ export default function CarMuseum() {
     },
     {
       name: "Development Class Nationals",
-      model: useLoader(FBXLoader, "models/vega_dev_nationals.fbx"),
+      model: useLoader(FBXLoader, "models/vega-dev-nationals.fbx"),
       photos: [
-        `/car-photos/DevRegionalsandNationals1.png`,
-        "/car-photos/DevRegionalsandNationals2.png",
+        `/car-photos/dev-regionals-and-nationals-1.png`,
+        "/car-photos/dev-regionals-and-nationals-2.png",
       ],
       awards: [
         "2nd Fastest Car",
@@ -78,10 +77,10 @@ export default function CarMuseum() {
     },
     {
       name: "Development Class Regionals",
-      model: useLoader(FBXLoader, "models/vega_dev_regionals.fbx"),
+      model: useLoader(FBXLoader, "models/vega-dev-regionals.fbx"),
       photos: [
-        `/car-photos/DevRegionalsandNationals1.png`,
-        "/car-photos/DevRegionalsandNationals2.png",
+        `/car-photos/dev-regionals-and-nationals-1.png`,
+        "/car-photos/dev-regionals-and-nationals-2.png",
       ],
       awards: ["Fastest & Best Engineered Car"],
       date: "06/10/2022",
@@ -97,7 +96,6 @@ export default function CarMuseum() {
 
   return (
     <>
-      <Title title="Car Museum" />
       <div className="mx-[-20px] sm:mx-0 relative shadow-xl min-h-[400px] grow overflow-hidden">
         <SimpleDisplay currentCar={currentCar} />
         <CarEnvironment

@@ -10,7 +10,7 @@ import { navigationItems } from "./navigation";
 // Navbar (Expanded)
 
 function BigScreenNavBar() {
-  const NavButtons = navigationItems.map((item) => {
+  const navButtons = navigationItems.map((item) => {
     return item.submenu ? (
       <Menu
         trigger="hover"
@@ -35,7 +35,7 @@ function BigScreenNavBar() {
     );
   });
 
-  return <>{NavButtons}</>;
+  return <>{navButtons}</>;
 }
 
 function NavButton({ title, url }: { title: string; url: string }) {
@@ -52,7 +52,7 @@ function NavButton({ title, url }: { title: string; url: string }) {
 // Navbar (Collapsed)
 
 function SmallScreenDropdownNav() {
-  const DropdownNavButtons = navigationItems.map((item) => {
+  const dropdownNavButtons = navigationItems.map((item) => {
     return item.submenu ? (
       item.submenu.map((item) => {
         return (
@@ -80,7 +80,7 @@ function SmallScreenDropdownNav() {
             Home
           </Link>
         </Menu.Item>
-        {DropdownNavButtons}
+        {dropdownNavButtons}
       </Menu.Dropdown>
     </Menu>
   );
@@ -104,7 +104,7 @@ export default function Header() {
         <div className="flex-1 sm:hidden"></div>
         <Link className="flex-32 sm:block justify-center" href="/">
           <Image
-            src="/vega-colour.png"
+            src="/vega-logo.png"
             width={120}
             height={0}
             alt="Vega Logo"

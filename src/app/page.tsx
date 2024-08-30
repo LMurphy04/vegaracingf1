@@ -1,6 +1,6 @@
 import Title from "../app/title";
 import Image from "next/image";
-import SponsorCarousel from "./sponsorCarousel";
+import SponsorCarousel from "./sponsor-carousel";
 import "@mantine/carousel/styles.css";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
           </p>
         </div>
         <Image
-          src={`/team-photos/frontPage3.jpg`}
+          src={`/team-photos/team-huddle.jpg`}
           width={1500}
           height={1000}
           alt={`Vega Working with School Pupils`}
@@ -60,7 +60,7 @@ function WhatIsF1iS() {
       </div>
       <div className="my-auto basis-1/3">
         <Image
-          src={`/team-photos/frontPage1.jpg`}
+          src={`/team-photos/team-trophy.jpg`}
           width={1500}
           height={1000}
           alt={`Vega Working with School Pupils`}
@@ -78,7 +78,7 @@ function AboutUs() {
     <div className="flex flex-col md:flex-row gap-10 md:gap-5">
       <div className="my-auto basis-1/3 hidden md:block">
         <Image
-          src={`/team-photos/frontPage2.jpg`}
+          src={`/team-photos/team-interview.jpg`}
           width={1500}
           height={1000}
           alt={`Vega Working with School Pupils`}

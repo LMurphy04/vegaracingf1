@@ -18,26 +18,26 @@ export const navigationItems = [
   {
     title: "Car Museum",
     url: "/car-museum",
-    id: 3,
+    id: 2,
   },
   {
     title: "Our Journey",
     url: "/our-journey",
-    id: 4,
+    id: 3,
   },
   {
     title: "Partners",
     url: "/partners",
-    id: 5,
+    id: 4,
   },
   {
     title: "Blog",
     url: "/blog",
-    id: 6,
+    id: 5,
   },
   {
     title: "Contact Us",
     url: "/contact-us",
-    id: 7,
+    id: 6,
   },
 ];

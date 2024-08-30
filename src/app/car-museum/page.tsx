@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Title from "../title";
 
 //Disable SSR for Car Museum
 const DynamicComponentWithNoSSR = dynamic(
@@ -8,6 +9,11 @@ const DynamicComponentWithNoSSR = dynamic(
   }
 );
 
-const LoadCarMuseum = () => <DynamicComponentWithNoSSR />;
+const LoadCarMuseum = () => (
+  <>
+    <Title title="Car Museum" />
+    <DynamicComponentWithNoSSR />
+  </>
+);
 
 export default LoadCarMuseum;
