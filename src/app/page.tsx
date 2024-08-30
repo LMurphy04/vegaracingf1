@@ -10,10 +10,14 @@ export default function Home() {
       <div className="flex flex-col gap-10">
         <p>
           Hi, we’re <span className="font-bold">Vega Racing</span>, a
-          professional class F1 in Schools team! This year we’re representing
+          Professional Class F1 in Schools team! This year we’re representing
           Scotland at the{" "}
-          <a href="https://www.f1inschools.com/" target="_blank">
-            <span className="font-bold underline">2024 World Finals</span>
+          <a
+            href="https://www.f1inschools.com/"
+            target="_blank"
+            className="font-bold underline"
+          >
+            2024 World Finals
           </a>{" "}
           in Saudi Arabia, and we’d love to take you along for the ride.
         </p>
