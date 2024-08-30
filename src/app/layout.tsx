@@ -9,7 +9,7 @@ import Footer from "./footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Vega Racing F1iS",
+  title: "Vega Racing",
   description: "Vega Racing's Official F1iS Website",
 };
 
