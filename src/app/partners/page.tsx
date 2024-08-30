@@ -10,6 +10,11 @@ export default function Home() {
       <Title title={"Partners"} />
       <p className="mb-5 text-center font-semibold italic">
         We would not be here today without the help of our brilliant partners!
+        If you would like to get involved please don&apos;t hesitate to{" "}
+        <a href="/contact-us" className="underline">
+          contact us
+        </a>
+        !
       </p>
       <div className="flex flex-col gap-10 justify-center">
         <TierHeading title={"P1 Sponsors"} />
