@@ -26,8 +26,8 @@ export default function Home() {
             >
               <Image
                 src={event["image"]}
-                width={750}
-                height={591}
+                width={1500}
+                height={1000}
                 alt={`${event["title"]} Photo`}
                 priority={true}
                 style={{ width: "100%", height: "auto" }}
