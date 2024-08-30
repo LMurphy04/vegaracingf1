@@ -154,7 +154,7 @@ function SimpleDisplay({ currentCar }: { currentCar: CarDetails }) {
                 src={photo}
                 width={750}
                 height={591}
-                alt={`Vega Working with School Pupils`}
+                alt={`${currentCar["name"]} Photo`}
                 priority={true}
                 style={{ width: "100%", height: "auto" }}
                 className="rounded-md hover:scale-[1.02]"

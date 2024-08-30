@@ -28,7 +28,7 @@ export default function Home() {
                 src={event["image"]}
                 width={750}
                 height={591}
-                alt={`Vega Working with School Pupils`}
+                alt={`${event["title"]} Photo`}
                 priority={true}
                 style={{ width: "100%", height: "auto" }}
                 className="rounded-lg shadow-xl mb-10 hover:scale-[1.01]"
