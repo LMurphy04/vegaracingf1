@@ -46,8 +46,19 @@ export default function Home() {
 function WhatIsF1iS() {
   return (
     <div className="flex flex-col md:flex-row gap-10 md:gap-5">
+      <div className="my-auto basis-1/3">
+        <Image
+          src={`/team-photos/team-trophy.jpg`}
+          width={1500}
+          height={1000}
+          alt={`Vega Working with School Pupils`}
+          priority={true}
+          style={{ width: "100%", height: "auto" }}
+          className="rounded-md shadow-2xl hover:scale-[1.02] transition-all"
+        />
+      </div>
       <div className="basis-2/3 my-auto">
-        <p>
+        <p className="md:ml-5">
           <span className="font-bold">What is F1 in Schools?</span>
           <br />
           F1 in Schools is an international youth competition with a focus on
@@ -62,37 +73,15 @@ function WhatIsF1iS() {
           opportunity we are eager to take ourselves!
         </p>
       </div>
-      <div className="my-auto basis-1/3">
-        <Image
-          src={`/team-photos/team-trophy.jpg`}
-          width={1500}
-          height={1000}
-          alt={`Vega Working with School Pupils`}
-          priority={true}
-          style={{ width: "100%", height: "auto" }}
-          className="rounded-md shadow-2xl hover:scale-[1.02] transition-all"
-        />
-      </div>
     </div>
   );
 }
 
 function AboutUs() {
   return (
-    <div className="flex flex-col md:flex-row gap-10 md:gap-5">
-      <div className="my-auto basis-1/3 hidden md:block">
-        <Image
-          src={`/team-photos/team-interview.jpg`}
-          width={1500}
-          height={1000}
-          alt={`Vega Working with School Pupils`}
-          priority={true}
-          style={{ width: "100%", height: "auto" }}
-          className="rounded-md shadow-2xl hover:scale-[1.02] transition-all"
-        />
-      </div>
+    <div className="flex flex-col-reverse md:flex-row gap-10 md:gap-5">
       <div className="basis-2/3 my-auto">
-        <p className="md:ml-5">
+        <p>
           <span className="font-bold">About Us</span>
           <br />
           We’re a Professional Class F1 in Schools team formed of six students
@@ -106,6 +95,17 @@ function AboutUs() {
           backing, so we hope to continue our crucial link with them into the
           future.
         </p>
+      </div>
+      <div className="my-auto basis-1/3">
+        <Image
+          src={`/team-photos/team-interview.jpg`}
+          width={1500}
+          height={1000}
+          alt={`Vega Working with School Pupils`}
+          priority={true}
+          style={{ width: "100%", height: "auto" }}
+          className="rounded-md shadow-2xl hover:scale-[1.02] transition-all"
+        />
       </div>
     </div>
   );
