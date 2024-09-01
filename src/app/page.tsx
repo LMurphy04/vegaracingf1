@@ -49,8 +49,8 @@ function WhatIsF1iS() {
       <div className="my-auto basis-1/3">
         <Image
           src={`/team-photos/team-trophy.jpg`}
-          width={1500}
-          height={1000}
+          width={750}
+          height={500}
           alt={`Vega Working with School Pupils`}
           priority={true}
           style={{ width: "100%", height: "auto" }}
@@ -99,8 +99,8 @@ function AboutUs() {
       <div className="my-auto basis-1/3">
         <Image
           src={`/team-photos/team-interview.jpg`}
-          width={1500}
-          height={1000}
+          width={750}
+          height={500}
           alt={`Vega Working with School Pupils`}
           priority={true}
           style={{ width: "100%", height: "auto" }}
